@@ -1,0 +1,6 @@
+export const CHANGE_USER_INFO = "user/CHANGE_USER_INFO"
+export const CHANGE_USER_SESSION = "user/CHANGE_USER_SESSION"
+export const CHANGE_FAVORITE_LIST = "user/CHANGE_FAVORITE_LIST"
+export const CHANGE_NOTICE_LIST = "user/CHANGE_NOTICE_LIST"
+
+export const RESET_USER = "user/RESET_USER"

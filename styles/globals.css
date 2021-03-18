@@ -2,15 +2,88 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 * {
   box-sizing: border-box;
+}
+
+body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
+  padding: 0;
+  margin: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+
+i, em {
+  font-style: normal;
+}
+
+input, textarea, button, select, a {
+  outline: none;
+  border: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+/* a {
+  color: rgba(0, 0, 0, 0.85);
+} */
+
+/* .comm-box{
+  margin-left: .5rem;
+  padding:.3rem;
+  border-radius: .3rem;
+  border:1px solid #eee;
+}
+
+.comm-left{
+  background-color: #FFF;
+  padding:.3rem;
+  border-radius: .3rem;
+  border-bottom:1px solid #eee;
+}
+
+.comm-right{
+  background-color: #FFF;
+  margin-left: .5rem;
+  padding:.3rem;
+  border-radius: .3rem;
+  border-bottom:1px solid #eee;
+} */
+
+.comm-main {
+  margin-top: 20px;
+}
+
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+h4 {
+  font-size: 1.25em;
 }
