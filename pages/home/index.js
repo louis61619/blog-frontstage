@@ -9,16 +9,10 @@ import { Row, Col, Affix } from "antd";
 import List from '~/components/common/list'
 import Author from '~/components/common/author'
 import Advert from '~/components/common/advert'
-// import HomeRecommend from '~/components/home/home-recommend'
+import HomeRecommend from '~/components/home/home-recommend'
 import Scroll from '~/components/common/scroll'
 
 import { HomeWrapper } from '../../components/home/style'
-
-const HomeRecommend = dynamic(
-  () => import('~/components/home/home-recommend'),
-  { loading: () => <p>00000000</p> }
-)
-
 
 const Home = memo((props) => {
   const { recommendList, list: propsList, listCount } = props
@@ -48,7 +42,8 @@ const Home = memo((props) => {
   );
 });
 
-export const getStaticProps = async () => {
+
+export const getServerSideProps = async () => {
   const recommendList = await getTopRecommned()
   const res = await getArticleList();
 

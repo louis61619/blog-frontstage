@@ -30,13 +30,6 @@ function MyApp({ Component, pageProps, providers, propsAjaxStatus }) {
   const store = useStore(pageProps?.initialReduxState)
   const router = useRouter()
 
-  // router.beforePopState(() => {
-  //   console.log("00000")
-  // })
-  useEffect(() => {
-    console.log("pppp")
-  })
-
   return (
     <Provider store={store}>
       <Header providers={providers} />
@@ -48,8 +41,7 @@ function MyApp({ Component, pageProps, providers, propsAjaxStatus }) {
   )
 }
 
-MyApp.getInitialProps = async (context) => {
-  
+export const getStaticProps = async (context) => {
   return {
     providers: await providers(context),
   }

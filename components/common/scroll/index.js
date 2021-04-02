@@ -24,8 +24,6 @@ export default memo(function Scroll({ children, list, setList, changeFun, action
     setLoading(false)
 
     setTimeout(() => {
-      // console.log()
-      
       changeFun(page * 2, 2).then(res => {
         if(res.data.length === 0) {
           setHasMore(false)
@@ -34,7 +32,7 @@ export default memo(function Scroll({ children, list, setList, changeFun, action
         setPage(page + 1)
         setLoading(true)
       })
-    }, 500)
+    }, 300)
     
   };
 

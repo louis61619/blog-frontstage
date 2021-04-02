@@ -2,6 +2,29 @@ import marked from "marked";
 import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';
 
+function checkURL(URL) {
+  var str = URL;
+  var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/;
+  var objExp = new RegExp(Expression);
+  if (objExp.test(str) === true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const renderer = new marked.Renderer();
+
+renderer.image = function (src, title, alt) {
+  const newSrc = checkURL(src)? src : process.env.NEXT_PUBLIC_STATIC + src;
+  // console.log(newSrc)
+  return `<img src="${newSrc}" />`;
+};
+
+marked.setOptions({
+  renderer: renderer,
+});
+
 marked.setOptions({
   gfm: true,
   pedantic: false,
