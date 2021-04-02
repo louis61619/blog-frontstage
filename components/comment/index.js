@@ -15,16 +15,17 @@ export default memo(
     const { comments, articleId } = props;
     const [visible, setVisible] = useState(false);
     const [commentList, setCommentList] = useState([])
-    const { userInfo } = useSelector(
+    const { userInfo, adminInfo } = useSelector(
       (state) => ({
         userInfo: state.getIn(["user", "userInfo"]),
+        adminInfo: state.getIn(["admin", "adminInfo"])
       }),
       shallowEqual
     );
 
     useEffect(() => {
       const arr = comments && [...comments].sort(function (a, b) {
-        return a.createTime < b.createTime ? 1 : -1;
+        return a.updateTime < b.updateTime ? 1 : -1;
        })
        setCommentList(arr || [])
     }, [comments, setCommentList])
@@ -49,7 +50,7 @@ export default memo(
         visible={visible}
       >
         <CommentWrapper>
-          <CommentContext.Provider value={{userInfo, articleId, commentList, setCommentList}}>
+          <CommentContext.Provider value={{userInfo, adminInfo, articleId, commentList, setCommentList}}>
           <CommentArea />
           {/* 第一層就是沒有回覆評論這個屬性的留言 */}
           {commentList &&

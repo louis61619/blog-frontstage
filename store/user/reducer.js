@@ -7,6 +7,7 @@ const defaultState = Map({
   userSession: {},
   noticeList: [], // 留言通知
   favoriteList: [],
+  visitsChecked: false
 })
 
 function reducer(state = defaultState, action) {
@@ -21,6 +22,10 @@ function reducer(state = defaultState, action) {
       return state.set("noticeList", action.list)
     case actionTypes.RESET_USER:
       return state = defaultState
+    case actionTypes.CHANGE_USER_NAME:
+      return state.setIn(["userInfo", "name"], action.name)
+    case actionTypes.CHANGE_VISITS_CHECKED:
+      return state.set("visitsChecked", true)
     default:
       return state
   }

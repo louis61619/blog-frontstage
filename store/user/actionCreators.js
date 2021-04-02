@@ -6,7 +6,9 @@ import {
   addFavorite,
   cancelFavorite,
   getFavoriteList,
-  getNoticeList
+  getNoticeList,
+  editUserName,
+  addVisits
 } from '~/services/user'
 import { formatJsonStr } from '~/utils/formate-utils'
 
@@ -30,8 +32,17 @@ const changeNoticeList = list => ({
   list
 })
 
+const changeVisitsChecked = () => ({
+  type: actionTypes.CHANGE_VISITS_CHECKED
+})
+
 export const resetUser = () => ({
   type: actionTypes.RESET_USER
+})
+
+const changeUserName = name => ({
+  type: actionTypes.CHANGE_USER_NAME,
+  name
 })
 
 // export const getUserSessinAction = () => {
@@ -41,6 +52,16 @@ export const resetUser = () => ({
 //     dispatch(changeUserSession(res?.user))
 //   }
 // }
+
+export const changeVisitsCheckedAction = () => {
+  return async (dispatch, getState) => {
+    const visitsChecked = getState().getIn(["user", "visitsChecked"])
+    if(!visitsChecked) {
+      dispatch(changeVisitsChecked())
+      addVisits()
+    }
+  }
+}
 
 export const getUserInfoAction = () => {
   return async dispatch => {
@@ -88,16 +109,30 @@ export const cancelFavoriteAction = (articleId, willChangeList) => {
   }
 }
 
-export const getFavoriteListAction = () => {
-  return async dispatch => {
-    const result = await getFavoriteList()
-    dispatch(changeFavoriteList(result))
+export const getFavoriteListAction = (offset, size) => {
+  return async (dispatch, getState) => {
+    if(!offset) dispatch(changeFavoriteList([]))
+    const list = getState().getIn(["user", "favoriteList"])
+    const res = await getFavoriteList(offset, size)
+    dispatch(changeFavoriteList([...list, ...res.data]))
+    return res
   }
 }
 
-export const getNoticeListAction = () => {
+export const getNoticeListAction = (offset, size) => {
+  return async (dispatch, getState) => {
+    if(!offset) dispatch(changeNoticeList([]))
+    const list = getState().getIn(["user", "noticeList"])
+    const res = await getNoticeList(offset, size)
+    // console.log(data)
+    dispatch(changeNoticeList([...list, ...res.data]))
+    return res
+  }
+}
+
+export const changeUserNameAction = name => {
   return async dispatch => {
-    const result = await getNoticeList()
-    dispatch(changeNoticeList(result))
+    const result = await editUserName(name)
+    dispatch(changeUserName(name))
   }
 }

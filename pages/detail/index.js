@@ -82,7 +82,7 @@ const Detail = memo((props) => {
   return (
     <DetailWrapper>
       <Head>
-        <title>detail</title>
+        <title>{article.title}</title>
       </Head>
 
       <Row className="comm-main" type="flex" justify="center">

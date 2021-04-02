@@ -18,6 +18,7 @@ export const AuthorWrapper = styled.div`
     color: #999;
 
     .account{
+      cursor: pointer;
       background-color: #999;
       margin-left: .5rem;
       margin-right: .5rem;

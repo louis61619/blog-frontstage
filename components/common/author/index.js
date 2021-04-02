@@ -1,10 +1,11 @@
-import React, { memo } from "react";
-
-import { Avatar, Divider } from 'antd'
+import React, { memo, useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { Avatar, Divider, message } from 'antd'
 import {
   GithubOutlined,
   MediumOutlined,
-  GooglePlusOutlined
+  GooglePlusOutlined,
+  MailOutlined
 } from '@ant-design/icons'
 import {
   AuthorWrapper
@@ -12,8 +13,20 @@ import {
 
 export default memo(function Author() {
 
+  const {
+    adminInfo
+  } = useSelector(state => ({
+    adminInfo: state.getIn(["admin", "adminInfo"])
+  }), shallowEqual)
+
   const clickItem = () => {
-    window.open("https://louis61619.medium.com/")
+    var dummy = document.createElement('input')
+    document.body.appendChild(dummy);
+    dummy.value = adminInfo.email;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+    message.success('複製email地址成功')
   }
 
   return (
@@ -22,17 +35,25 @@ export default memo(function Author() {
         {" "}
         <Avatar
           size={100}
-          src="https://uploadfile.huiyi8.com/2014/0708/20140708052136980.jpg"
+          src={adminInfo?.avatarUrl}
         />
       </div>
       <div className="author-introduction">
-        生命不息，代碼不止
+        { adminInfo?.slogan }
         <Divider>社交帳號</Divider>
-        <a href="https://github.com/louis61619" target="_blank">
-          <Avatar size={28} icon={<GithubOutlined />} className="account" />
-        </a>
-        <Avatar size={28} icon={<MediumOutlined />} onClick={clickItem} className="account" />
-        {/* <Avatar size={28} icon={<GooglePlusOutlined />} className="account" /> */}
+        { adminInfo?.github && 
+          <a href={adminInfo?.github} target="_blank">
+            <Avatar size={28} icon={<GithubOutlined />} className="account" />
+          </a>
+        }
+        { adminInfo?.medium && 
+          <a href={adminInfo?.medium} target="_blank">
+            <Avatar size={28} icon={<MediumOutlined />} className="account" />
+          </a>
+        }
+        { adminInfo?.email && 
+          <Avatar size={28} icon={<MailOutlined />} onClick={clickItem} className="account" />
+        }
       </div>
     </AuthorWrapper>
   );

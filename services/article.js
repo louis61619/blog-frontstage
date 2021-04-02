@@ -6,9 +6,13 @@ export function getLabels() {
   })
 }
 
-export function getArticleByLabelId(id) {
+export function getArticleByLabelId(id, offset, size) {
   return request({
-    url: "/default/getArticleByLabelId/" + id 
+    url: "/default/getArticleByLabelId/" + id ,
+    params: {
+      offset, 
+      size
+    }
   })
 }
 

@@ -26,8 +26,8 @@ export default memo(function CommentArea(props) {
 
   const leaveMessage = async () => {
     const res = await writeComment(articleId, value)
-    console.log(res.insertId)
-    const message = {
+    if(res.isSuccess !== true) return message.warn(res.data)
+    const newComment = {
       commentId: null,
       content: value,
       createTime: res.createTime,
@@ -39,7 +39,7 @@ export default memo(function CommentArea(props) {
       }
     }
     // console.log(commentList)
-    setCommentList([...commentList, message])
+    setCommentList([newComment, ...commentList])
     setValue(null);
     setIsFocus(false);
   }
@@ -65,7 +65,7 @@ export default memo(function CommentArea(props) {
             autoSize={{ minRows: 3, maxRows: 5 }}
             bordered={false}
             showCount
-            maxLength={100}
+            maxLength={250}
           />
           <div className="area-bottom">
             <Button onClick={leaveMessage} type="primary">留言</Button>

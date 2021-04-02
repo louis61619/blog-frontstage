@@ -24,6 +24,7 @@ export const UserCommentWrapper = styled.div`
       display: flex;
       justify-content: center;
       flex-direction: column;
+      position: relative;
     }
     .user-select {
       flex: 1;
@@ -37,6 +38,7 @@ export const UserCommentWrapper = styled.div`
   .content {
     padding: 5px 0px;
     margin-bottom: 15px;
+    white-space: pre-wrap;
   }
 
   .bottom {
@@ -78,7 +80,8 @@ export const UserCommentWrapper = styled.div`
       margin-top: 15px;
       .comment-item {
         
-        padding: 25px 0 16px 0;
+        /* padding: 25px 0 16px 0; */
+        padding: 8px 0;
         border-bottom: 1px solid rgba(230, 230, 230, 1);
 
         &:last-child {
@@ -113,3 +116,20 @@ export const ReplyWrapper = styled.div`
     left: 7px;
   }
 `;
+
+export const UserNameWrapper = styled.div`
+  position: relative;
+  &::after {
+    content: "作者";
+    display: ${
+      props => props.author? "block": "none"
+    };
+    position: absolute;
+    font-size: 13px;
+    top: -5px;
+    right: -35px;
+    background-color: rgb(26, 137, 23);
+    color: #fff;
+    padding: 0px 2px;
+  }
+`

@@ -46,7 +46,7 @@ export default memo(function DetailRecommend(props) {
             <a>
               <List.Item>
                 <Card
-                  cover={<img className="card-image" alt="card" src={JSON.parse(item.images)[0]} />}
+                  cover={<img className="card-image" alt="card" src={item.images && JSON.parse(item.images)[0] || "/coding.jpeg"} />}
                 >
                   <Meta title={item.title} description={item.introduce} />
                 </Card>

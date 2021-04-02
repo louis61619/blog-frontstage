@@ -4,18 +4,18 @@ import { initializeStore } from '~/store'
 const store = initializeStore()
 // console.log(store.getState().getIn(["user", "userInfo"]))
 function getToken() {
-  
   return store.getState().getIn(["user", "userSession"])?.accessToken
 }
 
-export function login(name, email, image) {
+export function login(name, email, image, token) {
   return request({
     method: "POST",
     url: "/user/login",
     data: {
       name,
       email,
-      image
+      image,
+      token
     }
   })
 }
@@ -32,9 +32,13 @@ export function getUserInfo(userId) {
   })
 }
 
-export function getFavoriteList() {
+export function getFavoriteList(offset, size) {
   return request({
     url: "/user/favoriteList",
+    params: {
+      offset,
+      size
+    },
     headers: {
       'Authorization': getToken()
     }
@@ -67,12 +71,48 @@ export function cancelFavorite(articleId) {
   })
 }
 
-export function getNoticeList() {
+export function getNoticeList(offset, size) {
   return request({
     method: "GET",
     url: "/user/notice",
+    params: {
+      offset,
+      size
+    },
     headers: {
       'Authorization': getToken()
     }
+  })
+}
+
+export function editUserName(name) {
+  return request({
+    method: "PATCH",
+    url: "/user/info/modify",
+    data: {
+      name
+    },
+    headers: {
+      'Authorization': getToken()
+    }
+  })
+}
+
+export function uploadAvatar(data) {
+  return request({
+    method: "POST",
+    url: "/user/avatar/upload",
+    headers: {
+      "content-type": "multipart/form-data",
+      'Authorization': getToken()
+    },
+    data,
+  })
+}
+
+export function addVisits() {
+  return request({
+    method: "PATCH",
+    url: "/default/addVistis",
   })
 }

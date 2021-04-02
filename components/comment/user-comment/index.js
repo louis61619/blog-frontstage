@@ -16,7 +16,7 @@ import { CommentContext } from '..'
 
 import { EllipsisOutlined, MessageOutlined } from "@ant-design/icons";
 import { Drawer, Button, Input, Avatar, Menu, Dropdown, message } from "antd";
-import { UserCommentWrapper, ReplyWrapper } from "./style";
+import { UserCommentWrapper, ReplyWrapper, UserNameWrapper } from "./style";
 
 const { TextArea } = Input;
 
@@ -42,7 +42,7 @@ function ReplyArea(props) {
         autoSize={{ minRows: 3, maxRows: 5 }}
         bordered={false}
         showCount
-        maxLength={100}
+        maxLength={250}
       />
       <div className="area-bottom">
         <Button onClick={(e) => setShowTextArea(false)} type="link">
@@ -62,7 +62,8 @@ const Comment = forwardRef((props, ref) => {
     userInfo,
     articleId,
     commentList,
-    setCommentList
+    setCommentList,
+    adminInfo
   } = useContext(CommentContext)
   const { id, user, content, commentId, createTime, updateTime } = props.item;
 
@@ -118,10 +119,12 @@ const Comment = forwardRef((props, ref) => {
         <>
           <div className="top-user">
             <div className="user-avatar">
-              <Avatar size={32} src={user.avatarUrl} />
+              <Avatar size={48} src={user.avatarUrl} />
             </div>
             <div className="user-info">
-              <span>{user.name}</span>
+              <UserNameWrapper author={adminInfo.userId === user.id}>
+                {user.name}
+              </UserNameWrapper>
               <span>{moment(updateTime).fromNow()}</span>
             </div>
             <div className="user-select">
@@ -157,7 +160,7 @@ export default memo(function UserComment(props) {
 
   const [value, setValue] = useState(null);
   const [showTextarea, setShowTextArea] = useState(false);
-  const [showReply, setShowReply] = useState(true);
+  const [showReply, setShowReply] = useState(false);
   const [bottomShow, setBottomShow] = useState(true)
   // const CommentRef = useRef();
 
@@ -173,25 +176,25 @@ export default memo(function UserComment(props) {
   });
 
   // 回覆留言
-  const reply = async () => {
-    const res = await writeCommentReply(articleId, value, id);
-    const message = {
-      commentId: id,
-      content: value,
-      createTime: res.createTime,
-      id: res.insertId,
-      user: {
-        avatarUrl: userInfo.avatarUrl,
-        id: userInfo.id,
-        name: userInfo.name,
-      },
-    };
-    console.log(message);
-    setCommentList([message, ...commentList]);
-    setValue(null);
-    setShowTextArea(false);
-    setShowReply(true);
-  };
+  // const reply = async () => {
+  //   const res = await writeCommentReply(articleId, value, id);
+  //   const message = {
+  //     commentId: id,
+  //     content: value,
+  //     createTime: res.createTime,
+  //     id: res.insertId,
+  //     user: {
+  //       avatarUrl: userInfo.avatarUrl,
+  //       id: userInfo.id,
+  //       name: userInfo.name,
+  //     },
+  //   };
+  //   console.log(message);
+  //   setCommentList([message, ...commentList]);
+  //   setValue(null);
+  //   setShowTextArea(false);
+  //   setShowReply(true);
+  // };
 
   return (
     <UserCommentWrapper>
@@ -206,14 +209,14 @@ export default memo(function UserComment(props) {
             <MessageOutlined className="icon" />{" "}
             {!showReply ? `${replyCommentList?.length}則回覆` : "收起"}
           </span>
-          <div onClick={(e) => Object.keys(userInfo).length? setShowTextArea(true): message.warn('請先登錄')}>回覆</div>
+          {/* <div onClick={(e) => Object.keys(userInfo).length? setShowTextArea(true): message.warn('請先登錄')}>回覆</div> */}
         </div>
       )}
       {/* 第二層 */}
       <div className="second-floor">
         {showTextarea && (
           <ReplyArea  placeholder={`回覆${user.name}`} 
-                      reply={reply} 
+                      // reply={reply} 
                       value={value}
                       setValue={setValue}
                       setShowTextArea={setShowTextArea}/>

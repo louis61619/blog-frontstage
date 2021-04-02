@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Menu } from "antd";
 
 export const HeaderWrapper = styled.div`
   background-color: #fff;
@@ -6,23 +7,27 @@ export const HeaderWrapper = styled.div`
   height: 65px;
   border-bottom:1px solid #ccc;
 
-  a {
+  .header-title {
     display: flex;
     align-items: center;
     white-space:nowrap;
   }
 
   .header-logo {
-    color:#1e90ff;
+    /* color:#1e90ff;
     font-size: 2rem;
     text-align: left;
     height: 100%;
     font-weight: bold;
-    font-family: Arial Black;
+    font-family: Arial Black; */
+    cursor: pointer;
+    img {
+      width: 125px;
+    }
   }
 
   .header-text {
-    font-size: 1rem;
+    font-size: .8rem;
     color: #999;
     display: inline-block;
     padding-left: 1rem;
@@ -41,6 +46,17 @@ export const HeaderWrapper = styled.div`
       padding-right:1rem;
     }
   }
+  .menu-icon {
+      font-size: 1.5rem;
+    }
+  
+  
+`
 
+export const MenuWrapper = styled(Menu)`
+  border-right: none;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
   
 `

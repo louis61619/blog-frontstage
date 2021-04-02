@@ -14,7 +14,7 @@ export default memo(function ArticleLabel(props) {
       </Link>
       {props.labels.map((item) => {
         return (
-          <Link key={item.id} href="/article/[id]" as={`/article/${item.id}`}>
+          <Link key={item.id} href={`/article/${item.id}`}>
             <a>
               <Tag>
                 {item.name} ({item.articles})

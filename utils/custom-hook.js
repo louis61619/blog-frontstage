@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useRouter } from 'next/router'
 
 export const useDebouncedEffect = (effect, delay, deps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,3 +33,29 @@ export const useCheckLogin = () => {
 
   return [isLogin, userInfo]
 };
+
+
+export const useLoadingSkeleton = () => {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const handleRouteChange = (url, { shallow }) => {
+      console.log(
+        `App is changing to ${url} ${
+          shallow ? 'with' : 'without'
+        } shallow routing`
+      )
+    }
+
+    router.events.on('routeChangeStart', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
+    }
+  }, []);
+
+  return [loading]
+}

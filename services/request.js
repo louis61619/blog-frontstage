@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { BASE_URL, TIMEOUT } from './config'
 
 const instance = axios.create({
   baseURL: 'http://127.0.0.1:7001',
