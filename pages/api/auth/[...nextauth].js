@@ -14,6 +14,9 @@ const options = {
     // ...add more providers here
   ],
   callbacks: {
+    async redirect(url, baseUrl) {
+      return baseUrl
+    },
     async signIn(user, account, profile) {
       console.log("singinuser:", user);
       const { name, email, image } = user;

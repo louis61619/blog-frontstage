@@ -45,7 +45,7 @@ export default memo(
           <div className="login-area">
             {providers && Object.values(providers).map((provider) => (
               <div key={provider.name}>
-                <Button onClick={() => signIn(provider.id, { callbackUrl: router.query.callbackUrl })}>
+                <Button onClick={() => signIn(provider.id)}>
                   {
                     {
                       Facebook: <FacebookOutlined />,
