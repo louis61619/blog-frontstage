@@ -14,11 +14,6 @@ const options = {
     // ...add more providers here
   ],
   callbacks: {
-    redirect: async (url, baseUrl) => {
-      return url.startsWith(baseUrl)
-        ? Promise.resolve(url)
-        : Promise.resolve(baseUrl)
-    }
     async signIn(user, account, profile) {
       console.log("singinuser:", user);
       const { name, email, image } = user;

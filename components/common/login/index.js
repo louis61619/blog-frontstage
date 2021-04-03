@@ -1,5 +1,6 @@
 import React, { memo, forwardRef, useImperativeHandle, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 
 import { Modal, Button } from "antd";
 import { FacebookOutlined } from "@ant-design/icons";
@@ -7,6 +8,7 @@ import { LoginWrapper } from "./style";
 
 export default memo(
   forwardRef(function Login(props, ref) {
+    const router = useRouter()
     const { providers } = props;
     const [isModalVisible, setIsModalVisible] = useState(false);
     // const [ session, loading ] = useSession()
@@ -43,7 +45,7 @@ export default memo(
           <div className="login-area">
             {providers && Object.values(providers).map((provider) => (
               <div key={provider.name}>
-                <Button onClick={() => signIn(provider.id)}>
+                <Button onClick={() => signIn(provider.id, { callbackUrl: router.query.callbackUrl })}>
                   {
                     {
                       Facebook: <FacebookOutlined />,
