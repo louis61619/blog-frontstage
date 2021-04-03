@@ -20,9 +20,12 @@ export const HeaderWrapper = styled.div`
     height: 100%;
     font-weight: bold;
     font-family: Arial Black; */
+    position: relative;
     cursor: pointer;
+    width: 125px;
+    height: 60px;
     img {
-      width: 125px;
+      object-fit: cover;
     }
   }
 

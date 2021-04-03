@@ -1,4 +1,5 @@
 import marked from "marked";
+import Image from 'next/image'
 import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';
 

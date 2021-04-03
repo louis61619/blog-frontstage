@@ -1,7 +1,6 @@
 // import React, { memo, useEffect, useState,  } from "react";
 import { useEffect } from 'react'
 import ReactDOM from 'react-dom';
-import { providers, signIn } from 'next-auth/client'
 import { Provider, useDispatch } from 'react-redux'
 import { withRouter, useRouter } from 'next/router'
 import Router from "next/router";
@@ -26,25 +25,19 @@ Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 
-function MyApp({ Component, pageProps, providers, propsAjaxStatus }) {
+function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps?.initialReduxState)
   const router = useRouter()
 
   return (
     <Provider store={store}>
-      <Header providers={providers} />
+      <Header />
         <Auth>
           <Component {...pageProps} key={router.asPath} />
         </Auth> 
       {/* <Footer /> */}
     </Provider>
   )
-}
-
-export const getStaticProps = async (context) => {
-  return {
-    providers: await providers(context),
-  }
 }
 
 export default MyApp

@@ -16,12 +16,15 @@ export const HomeRecommendWrapper = styled.div`
     width: 100%;
     height: 100%;
     padding: 12px 1rem 1rem 0;
-    /* padding-right: 1rem; */
     display: flex;
     flex-direction: column;
-    div {
+    .img-block {
+      position: relative;
+      width: 100%;
+      height: 60%;
+      background-color: #eee;
       img {
-        width: 100%;
+        object-fit: cover;
       }
     }
     .left-item {
@@ -34,28 +37,6 @@ export const HomeRecommendWrapper = styled.div`
       & > * {
         margin-bottom: 5px;
 
-        /* & :last-child {
-          margin-bottom: 0;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          font-size: 1rem;
-          display: flex;
-
-          span {
-            display: inline-flex;
-            align-items: center;
-
-            .anticon {
-              margin-right: 5px;
-            }
-          }
-
-          & > span :last-child {
-            flex: 1;
-            justify-content: flex-end;
-          } */
       }
     }
   }
@@ -78,7 +59,11 @@ export const HomeRecommendWrapper = styled.div`
     .img-right {
       width: 100px;
       height: 100px;
-      object-fit: cover;
+      position: relative;
+      
+      img {
+        object-fit: cover;
+      }
     }
 
     .img-center {

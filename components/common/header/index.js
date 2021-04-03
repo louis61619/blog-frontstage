@@ -1,6 +1,7 @@
-import React, { memo, useEffect, useRef, Fragment } from "react";
+import React, { memo, useEffect, useRef, Fragment, useState } from "react";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/client";
+import Image from 'next/image'
+import { signIn, signOut, useSession, getProviders } from "next-auth/client";
 import { useRouter } from "next/router";
 
 import { useCheckLogin } from "~/utils/custom-hook";
@@ -17,10 +18,11 @@ import Login from "~/components/common/login";
 import { HeaderWrapper, MenuWrapper } from "./style";
 
 export default memo(function Header(props) {
-  const { providers } = props;
+  // const { providers } = props;
   const loginRef = useRef();
   const router = useRouter();
   const [isLogin, userInfo] = useCheckLogin();
+  const [providers, setProviders] = useState()
 
   const login = () => {
     if (isLogin) {
@@ -29,6 +31,11 @@ export default memo(function Header(props) {
       loginRef.current.showModal(true);
     }
   };
+
+  useEffect(async () => {
+    const providers = await getProviders()
+    setProviders(providers)
+  }, [])
 
 
   const menu = (
@@ -76,7 +83,7 @@ export default memo(function Header(props) {
           <Link href="/home">
             <div className="header-title">
               <span className="header-logo">
-                <img src="/logo.png" />
+                <Image quality={100} layout='fill' src="/logo.png" />
               </span>
               <span className="header-text">welcome to my blog</span>
             </div>

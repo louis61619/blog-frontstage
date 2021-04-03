@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect, useState, Fragment, useRef } from 
 import ReactDOM from "react-dom";
 
 import Head from "next/head";
+import Image from 'next/image'
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -142,7 +143,7 @@ export default memo(function Profile(props) {
           <div className="user">
             <div className="user-image">
               <div className="image-show">
-                <img src={ userImg || userInfo?.avatarUrl}></img>
+                <img src={ userImg || userInfo?.avatarUrl} />
                 <div className="img-hover">
                   <UploadOutlined />
                 </div>

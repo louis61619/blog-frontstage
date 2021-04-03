@@ -1,5 +1,5 @@
 import React, { Fragment, memo, useState } from "react";
-
+import Image from 'next/image'
 import Link from "next/link";
 import moment from "moment";
 import marked from "~/utils/markdown-formate";
@@ -38,7 +38,7 @@ const Recommend = memo((props) => {
         <Col className="comm-left" xs={0} sm={0} md={13} lg={14} xl={10}>
           <div className="first-item">
             <div>
-              <img src={JSON.parse(firstItem.images)[0]}></img>
+              <Image layout='fill' src={JSON.parse(firstItem.images)[0]} />
             </div>
             <div className="left-item">
               <p>{moment(firstItem.releaseTime).format("YYYY-MM-DD")}</p>
@@ -71,7 +71,7 @@ const Recommend = memo((props) => {
                   <List.Item
                     className="list-item"
                     extra={
-                      <img
+                      <Image
                         width="100"
                         height="100"
                         style={{ objectFit: "cover" }}
@@ -119,7 +119,7 @@ const Recommend = memo((props) => {
               <List.Item
               className="list-item"
                 extra={
-                  <img
+                  <Image
                     className="img-center"
                     alt="logo"
                     src={

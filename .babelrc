@@ -7,6 +7,6 @@
         "libraryName": "antd"
       }
     ],
-    ["styled-components"]
+    ["styled-components", { "ssr": true }]
   ]
 }

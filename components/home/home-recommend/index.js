@@ -1,6 +1,7 @@
 import React, { Fragment, memo, useState } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 import moment from "moment";
 import marked from "~/utils/markdown-formate";
 
@@ -35,36 +36,24 @@ const HomeRecommend = memo((props) => {
               <List.Item
                 className="list-item"
                 extra={
-                  <img
-                    className="img-right"
-                    // className={list.length !== 4 ? "img-center" : "img-right"}
-                    alt="logo"
-                    src={
-                      item.images
-                        ? JSON.parse(item.images)[0]
-                        : "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                    }
-                  />
+                  <div className="img-right img-skeleton">
+                    <Image
+                      quality={100}
+                      layout="fill"
+                      alt="logo"
+                      src={
+                        item.images
+                          ? JSON.parse(item.images)[0]
+                          : "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                      }
+                    />
+                  </div>
                 }
               >
                 <div className="left-item">
                   <p>{moment(item.releaseTime).format("YYYY-MM-DD")}</p>
                   <h3>{item.title}</h3>
                   <h4 className="introduce">{item.introduce}</h4>
-                  {/* {list.length !== 4 && <h4>{item.introduce}</h4>} */}
-                  {/* <div>
-                    <span>
-                      <TagsOutlined />
-                      {item.labels &&
-                        JSON.parse(item.labels).map((item) => {
-                          return <Tag key={item.id}>{item.name}</Tag>;
-                        })}
-                    </span>
-                    <span>
-                      <FolderAddOutlined />
-                      <LikeOutlined />
-                    </span>
-                  </div> */}
                 </div>
               </List.Item>
             </a>
@@ -81,26 +70,17 @@ const HomeRecommend = memo((props) => {
           <Link href={{ pathname: "/detail", query: { id: firstItem.id } }}>
             <a>
               <div className="first-item">
-                <div>
-                  <img src={JSON.parse(firstItem.images)[0]}></img>
+                <div className="img-block">
+                  <Image
+                    quality={100}
+                    layout="fill"
+                    src={JSON.parse(firstItem.images)[0]}
+                  />
                 </div>
                 <div className="left-item">
                   <p>{moment(firstItem.releaseTime).format("YYYY-MM-DD")}</p>
                   <h2>{firstItem.title}</h2>
                   <h4>{firstItem.introduce}</h4>
-                  {/* <div>
-                    <span>
-                      <TagsOutlined />
-                      {firstItem.labels &&
-                        JSON.parse(firstItem.labels).map((item) => {
-                          return <Tag key={item.id}>{item.name}</Tag>;
-                        })}
-                    </span>
-                    <span>
-                      <FolderAddOutlined />
-                      <LikeOutlined />
-                    </span>
-                  </div> */}
                 </div>
               </div>
             </a>
