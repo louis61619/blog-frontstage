@@ -1,11 +1,28 @@
 import Head from 'next/head'
+import { FallbackWrapper } from '~/components/fallback/style'
 
 export default () => (
-  <>
+  <FallbackWrapper>
     <Head>
-      <title>next-pwa example</title>
+      <title>fallback page</title>
     </Head>
-    <h1>This is offline fallback page</h1>
-    <h2>When offline, any route will fallback to this page</h2>
-  </>
+    <div
+      className="content"
+    >
+      <div>
+        <h1
+        >
+          404
+        </h1>
+        <div
+          className="statement"
+        >
+          <h2
+          >
+            This page could not be found
+          </h2>
+        </div>
+      </div>
+    </div>
+  </FallbackWrapper>
 )
