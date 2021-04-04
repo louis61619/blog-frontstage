@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import Head from "next/head";
-import Image from 'next/image'
+
 import Link from 'next/link'
 
 import { getArticleById, getArticleList } from "~/services/home";

@@ -3,7 +3,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 
 import { Modal, Button } from "antd";
-import { FacebookOutlined } from "@ant-design/icons";
+import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { LoginWrapper } from "./style";
 
 export default memo(
@@ -49,6 +49,7 @@ export default memo(
                   {
                     {
                       Facebook: <FacebookOutlined />,
+                      Google: <GoogleOutlined />
                     }[provider.name]
                   }
                   使用{provider.name}進行登錄

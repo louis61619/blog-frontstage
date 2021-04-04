@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   background-color: rgba(255, 255, 255, 1);
+  font-family:Helvetica,Tahoma, Arial,"PingFang SC",STXihei,"Microsoft yahei","WenQuanYi Micro Hei",sans-serif;
 }
 
 * {

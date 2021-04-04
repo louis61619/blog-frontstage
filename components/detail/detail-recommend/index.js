@@ -1,7 +1,6 @@
 import React, { memo, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Link from "next/link";
-import Image from 'next/image'
 
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import throttle from 'lodash/throttle'

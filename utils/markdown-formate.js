@@ -1,5 +1,4 @@
 import marked from "marked";
-import Image from 'next/image'
 import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';
 
@@ -19,7 +18,7 @@ const renderer = new marked.Renderer();
 renderer.image = function (src, title, alt) {
   const newSrc = checkURL(src)? src : process.env.NEXT_PUBLIC_STATIC + src;
   // console.log(newSrc)
-  return `<Image src="${newSrc}"></Image>`;
+  return `<img src="${newSrc}">`;
 };
 
 marked.setOptions({

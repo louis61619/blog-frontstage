@@ -1,7 +1,7 @@
 import React, { memo, Fragment, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Link from "next/link";
-import Image from 'next/image'
+
 import moment from "moment";
 import marked from "~/utils/markdown-formate";
 import {
