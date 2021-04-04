@@ -2,7 +2,7 @@ const path = require('path');
 
 
 
-module.exports = {
+module.exports = withPWA({
   webpack: config => {
     config.resolve.alias['~'] = path.resolve(__dirname);
     return config;
@@ -19,4 +19,10 @@ module.exports = {
   images: {
     domains: ['coderland.ml'],
   },
-};
+  pwa: {
+    disable: process.env.NODE_ENV === 'development',
+    register: true,
+    scope: '/app',
+    sw: 'service-worker.js',
+  }
+});
