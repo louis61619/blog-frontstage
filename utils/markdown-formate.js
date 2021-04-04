@@ -19,7 +19,7 @@ const renderer = new marked.Renderer();
 renderer.image = function (src, title, alt) {
   const newSrc = checkURL(src)? src : process.env.NEXT_PUBLIC_STATIC + src;
   // console.log(newSrc)
-  return `<img src="${newSrc}" />`;
+  return `<Image src="${newSrc}"></Image>`;
 };
 
 marked.setOptions({
