@@ -42,12 +42,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="keywords" content="Keywords" />
 
         <link rel="manifest" href="/manifest.json" />
-        <link
-          href="/icon-192x192.png"
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-        />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
