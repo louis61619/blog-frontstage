@@ -19,7 +19,7 @@ export default () => (
         >
           <h2
           >
-            This page could not be found
+            This is offline fallback page
           </h2>
         </div>
       </div>
