@@ -1,12 +1,12 @@
 {
-  "theme_color": "#fe0000",
-  "background_color": "#ffff",
-  "display": "browser",
+  "name": "CoderLand App",
+  "short_name": "CoderLand",
+  "theme_color": "#ffffff",
+  "background_color": "#004740",
+  "display": "fullscreen",
+  "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
-  "app_name": "CoderLand",
-  "short_name": "CoderLand",
-  "description": "CoderLand of a PWA",
   "icons": [
     {
       "src": "/icon-192x192.png",
