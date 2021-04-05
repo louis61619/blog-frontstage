@@ -79,7 +79,7 @@ const Recommend = memo((props) => {
                         src={
                           item.images
                             ? JSON.parse(item.images)[0]
-                            : "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                            : "/coding.jpeg"
                         }
                       />
                     }
@@ -125,7 +125,7 @@ const Recommend = memo((props) => {
                     src={
                       item.images
                         ? JSON.parse(item.images)[0]
-                        : "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                        : "/coding.jpeg"
                     }
                   />
                 }

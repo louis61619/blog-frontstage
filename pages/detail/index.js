@@ -41,7 +41,7 @@ const recommendList = (list) => {
                   src={
                     item.images
                       ? JSON.parse(item.images)[0]
-                      : "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                      : "/coding.jpeg"
                   }
                 />
               }
