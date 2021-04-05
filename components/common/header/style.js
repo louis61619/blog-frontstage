@@ -60,6 +60,7 @@ export const HeaderWrapper = styled.div`
 
 export const MenuWrapper = styled(Menu)`
   border-right: none;
+  font-size: 18px;
     @media (max-width: 767px) {
       flex-direction: column;
     }

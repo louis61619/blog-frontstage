@@ -62,7 +62,7 @@ export const HomeRecommendWrapper = styled.div`
       position: relative;
       
       img {
-        object-fit: cover;
+        object-fit: contain;
       }
     }
 
