@@ -45,7 +45,7 @@ export default memo(
       <Drawer
         title="留言"
         placement="right"
-        width="414"
+        className="comment-drawer"
         onClose={onClose}
         visible={visible}
       >

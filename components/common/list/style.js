@@ -26,6 +26,10 @@ export const ListWrapper = styled.div`
         font-size: 2rem;
         border-left: 4px solid rgb(156, 203, 250);
         padding-left: 1rem;
+
+        @media (max-width: 576px) {
+          font-size: 1.4rem;
+        }
       }
       .introduce {
         color: rgba(117, 117, 117, 1);

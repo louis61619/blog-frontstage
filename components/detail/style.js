@@ -6,12 +6,6 @@ export const DetailWrapper = styled.div`
     padding-left: 1rem;
     margin-bottom: 10px;
 
-    .img-right {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-    }
-
     .img-center {
       width: 270px;
       object-fit: cover;

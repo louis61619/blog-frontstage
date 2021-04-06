@@ -60,6 +60,10 @@ export const HomeRecommendWrapper = styled.div`
       width: 100px;
       height: 100px;
       position: relative;
+
+      @media (max-width: 376px) {
+        display: none;
+      }
       
       img {
         object-fit: contain;

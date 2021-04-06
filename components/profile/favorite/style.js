@@ -25,6 +25,11 @@ export const FavoriteWrapper = styled.div`
       width: 100px;
       height: 100px;
       object-fit: cover;
+
+      @media (max-width: 576px) {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .img-center {

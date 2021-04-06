@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef, Fragment, useState } from "react";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 import { signIn, signOut, useSession, getProviders } from "next-auth/client";
 import { useRouter } from "next/router";
 
@@ -22,7 +22,7 @@ export default memo(function Header(props) {
   const loginRef = useRef();
   const router = useRouter();
   const [isLogin, userInfo] = useCheckLogin();
-  const [providers, setProviders] = useState()
+  const [providers, setProviders] = useState();
 
   const login = () => {
     if (isLogin) {
@@ -33,10 +33,9 @@ export default memo(function Header(props) {
   };
 
   useEffect(async () => {
-    const providers = await getProviders()
-    setProviders(providers)
-  }, [])
-
+    const providers = await getProviders();
+    setProviders(providers);
+  }, []);
 
   const menu = (
     <MenuWrapper
@@ -80,24 +79,20 @@ export default memo(function Header(props) {
         style={{ height: "100%", flexWrap: "nowrap" }}
       >
         <Col xs={21} sm={22} md={10} lg={17} xl={12} style={{ zIndex: 1 }}>
-          <Link href="/home">
-            <div className="header-title">
-              <span className="header-logo">
+          <div className="header-title">
+            <span className="header-logo">
+              <Link href="/home">
                 <img width="125" height="60" src="/logo.png" />
-              </span>
-              <span className="header-text">welcome to my blog</span>
-            </div>
-          </Link>
+              </Link>
+            </span>
+            <span className="header-text">welcome to my blog</span>
+          </div>
         </Col>
         <Col xs={0} sm={0} md={13} lg={6} xl={6}>
           {menu}
         </Col>
         <Col xs={2} sm={1} md={0} lg={0} xl={0}>
-          <Dropdown
-            overlay={menu}
-            placement="bottomRight"
-            trigger={["click"]}
-          >
+          <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
             <AlignRightOutlined className="menu-icon" />
           </Dropdown>
         </Col>
