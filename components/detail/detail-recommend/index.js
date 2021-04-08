@@ -36,12 +36,12 @@ export default memo(function DetailRecommend(props) {
   const dispatch = useDispatch()
 
   const handleScroll = () => {
-    console.log('---')
-    // 或許可以想辦法做節流
+    
     const dom = ReactDOM.findDOMNode(recommendRef.current);
     dispatch(changeRecommendScrollTop(dom.getBoundingClientRect().top))
   };
 
+  // 或許可以想辦法做節流
   const invokeDebounced = useThrottle(
     handleScroll,
     100

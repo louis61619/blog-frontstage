@@ -5,9 +5,9 @@ const test = "none"
 export const MarkdownNavWrapper = styled.div`
   visibility: ${ props => {
     if(props.isShow) {
-      return "hidden"
-    } else {
       return "visible"
+    } else {
+      return "hidden"
     }
   }};
 
