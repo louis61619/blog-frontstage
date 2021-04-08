@@ -16,22 +16,22 @@ export default memo(function MarkdownNav(props) {
     recommendScrollTop: state.getIn(["detail", "recommendScrollTop"])
   }), shallowEqual)
 
-  const handleScroll = () => {
-    // console.log(markNavRef)
-    const dom = ReactDOM.findDOMNode(markNavRef.current);
-    // console.log("NAV" + dom.getBoundingClientRect().height);
-    // console.log(recommendScrollTop)
+  // const handleScroll = () => {
+  //   // console.log(markNavRef)
+  //   const dom = ReactDOM.findDOMNode(markNavRef.current);
+  //   // console.log("NAV" + dom.getBoundingClientRect().height);
+  //   // console.log(recommendScrollTop)
 
-    if(dom.getBoundingClientRect().height <= recommendScrollTop) {
-      setIsShow(false)
-    } else {
-      setIsShow(true)
-    }
-  };
+  //   if(dom.getBoundingClientRect().height <= recommendScrollTop) {
+  //     setIsShow(false)
+  //   } else {
+  //     setIsShow(true)
+  //   }
+  // };
 
-  useEffect(() => {
-    handleScroll()
-  }, [recommendScrollTop]);
+  // useEffect(() => {
+  //   handleScroll()
+  // }, [recommendScrollTop]);
 
   return (
     <MarkdownNavWrapper isShow={isShow} color={"blue"}>

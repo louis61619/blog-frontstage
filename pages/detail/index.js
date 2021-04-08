@@ -65,8 +65,6 @@ const Detail = memo((props) => {
   const commentRef = useRef()
   const [container, setContainer] = useState(null);
 
-  console.log(article)
-
   const {
     checkDetail
   } = useSelector(state => ({
