@@ -36,7 +36,7 @@ const recommendList = (list) => {
               className="list-item"
               extra={
                 <img
-                  className={list.length !== 4 ? "img-center" : "img-right"}
+                  className="img-center"
                   alt="logo"
                   src={
                     item.images
@@ -49,7 +49,7 @@ const recommendList = (list) => {
               <div className="left-item">
                 <p>{moment(item.releaseTime).format("YYYY-MM-DD")}</p>
                 <h2>{item.title}</h2>
-                {list.length !== 4 && <h4>{item.introduce}</h4>}
+                <h4>{item.introduce}</h4>
               </div>
             </List.Item>
           </a>
@@ -64,6 +64,8 @@ const Detail = memo((props) => {
   const { article, recommend } = props;
   const commentRef = useRef()
   const [container, setContainer] = useState(null);
+
+  console.log(article)
 
   const {
     checkDetail

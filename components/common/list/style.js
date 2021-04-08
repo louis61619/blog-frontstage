@@ -101,6 +101,9 @@ export const ListWrapper = styled.div`
         font-size: 2.25em;
         line-height: 1.2;
         border-bottom: 1px solid #cbcbcb;
+        @media (max-width: 576px) {
+          font-size: 1.5rem;
+        }
       }
 
       h2 {
@@ -108,11 +111,17 @@ export const ListWrapper = styled.div`
         font-size: 1.75em;
         line-height: 1.225;
         border-bottom: 1px solid #cbcbcb;
+        @media (max-width: 576px) {
+          font-size: 1.5rem;
+        }
       }
 
       h3 {
         font-size: 1.5em;
         line-height: 1.43;
+        @media (max-width: 576px) {
+          font-size: 1.3rem;
+        }
       }
 
       h4 {

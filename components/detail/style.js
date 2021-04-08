@@ -38,11 +38,6 @@ export const DetailWrapper = styled.div`
               
             }
           }
-
-          /* & > span :last-child {
-            flex: 1;
-            justify-content: flex-end;
-          } */
         }
       }
 

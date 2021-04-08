@@ -34,7 +34,7 @@ const ListItem = (props) => {
   return (
     <List.Item className="list-item">
     <Link href={{ pathname: "/detail", query: { id: item.id } }}>
-      <a target="_blank">
+      <a>
         <div className="item-top">
           <p>{moment(item.releaseTime).format("YYYY-MM-DD")}</p>
           <h2 className="title">{item.title}</h2>

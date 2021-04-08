@@ -39,32 +39,6 @@ img {
   vertical-align: middle;
 }
 
-/* a {
-  color: rgba(0, 0, 0, 0.85);
-} */
-
-/* .comm-box{
-  margin-left: .5rem;
-  padding:.3rem;
-  border-radius: .3rem;
-  border:1px solid #eee;
-}
-
-.comm-left{
-  background-color: #FFF;
-  padding:.3rem;
-  border-radius: .3rem;
-  border-bottom:1px solid #eee;
-}
-
-.comm-right{
-  background-color: #FFF;
-  margin-left: .5rem;
-  padding:.3rem;
-  border-radius: .3rem;
-  border-bottom:1px solid #eee;
-} */
-
 .comm-main {
   margin-top: 20px;
 }
@@ -87,6 +61,28 @@ h3 {
 
 h4 {
   font-size: 1.25em;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+    line-height: 1.225;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+    line-height: 1.43;
+  }
+  
+  h4 {
+    font-size: 1.2em;
+  }
 }
 
 .comment-drawer .ant-drawer-content-wrapper {

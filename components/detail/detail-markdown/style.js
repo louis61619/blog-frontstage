@@ -4,6 +4,10 @@ export const DetailMarkdownWrapper = styled.div`
   font-size: 16px;
   margin-bottom: 45px;
 
+  @media (max-width: 376px) {
+    font-size: .9rem;
+  } 
+
   h1,
   h2,
   h3,
@@ -56,6 +60,9 @@ export const DetailMarkdownWrapper = styled.div`
   p {
     margin-bottom: 16px;
     font-size: 1rem;
+    @media (max-width: 376px) {
+      font-size: .9rem;
+    } 
   }
 
   pre {

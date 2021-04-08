@@ -11,7 +11,7 @@ export const DetailRecommendWrapper = styled.div`
   }
 
   .ant-card-meta-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .ant-card-meta-description {
