@@ -34,7 +34,7 @@ export default memo(function MarkdownNav(props) {
   // }, [recommendScrollTop]);
 
   return (
-    <MarkdownNavWrapper isShow={isShow} color={"blue"}>
+    <MarkdownNavWrapper isShow={false} color={"blue"}>
       <MarkNav
         ref={markNavRef}
         className="article-menu"

@@ -96,7 +96,7 @@ const Detail = memo((props) => {
 
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Affix offsetTop={5}>
-            {/* <MarkdownNav markdown={article.context} /> */}
+            <MarkdownNav markdown={article.context} />
           </Affix>
         </Col>
       </Row>
