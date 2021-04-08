@@ -1,9 +1,8 @@
-import React, { memo, useRef, useEffect } from "react";
+import React, { memo, useRef, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom";
 import Link from "next/link";
-
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-import throttle from 'lodash/throttle'
+import { throttle } from 'lodash';
 import { changeRecommendScrollTop } from "~/store/detail/actionCreaters";
 
 import { List, Card } from "antd";
@@ -11,6 +10,18 @@ import { DetailRecommendWrapper } from "./style";
 
 
 const { Meta } = Card;
+
+function useThrottle(cb, delay) {
+  const options = { leading: true, trailing: false }; // pass custom lodash options
+  const cbRef = useRef(cb);
+  useEffect(() => {
+    cbRef.current = cb;
+  });
+  return useCallback(
+    throttle((...args) => cbRef.current(...args), delay, options),
+    [delay]
+  );
+}
 
 
 export default memo(function DetailRecommend(props) {
@@ -25,17 +36,23 @@ export default memo(function DetailRecommend(props) {
   const dispatch = useDispatch()
 
   const handleScroll = () => {
+    console.log('---')
     // 或許可以想辦法做節流
     const dom = ReactDOM.findDOMNode(recommendRef.current);
     dispatch(changeRecommendScrollTop(dom.getBoundingClientRect().top))
   };
 
+  const invokeDebounced = useThrottle(
+    handleScroll,
+    100
+  );
+
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll );
+    window.addEventListener("scroll", invokeDebounced);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", invokeDebounced);
     };
-  });
+  }, []);
 
   return (
     <DetailRecommendWrapper ref={recommendRef}>

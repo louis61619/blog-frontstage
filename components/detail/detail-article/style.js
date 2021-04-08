@@ -9,7 +9,8 @@ export const DetailArticleWrapper = styled.div`
     text-align: center;
     font-weight: bold;
     @media (max-width: 576px) {
-      font-size: 1.7rem
+      font-size: 1.7rem;
+      text-align: start;
     }
 
   }
@@ -19,6 +20,10 @@ export const DetailArticleWrapper = styled.div`
     text-align: center;
     color: rgba(117, 117, 117, 1);
 
+    @media (max-width: 576px) {
+      font-size: 1.2rem;
+      text-align: start;
+    }
   }
   
   .center{
