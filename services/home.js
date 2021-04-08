@@ -6,7 +6,7 @@ export function getTopRecommned() {
   })
 }
 
-export function getArticleList(offset, size) {
+export function getArticleList(offset=0, size=4) {
   return request({
     url: "/default/getArticleList",
     params: {

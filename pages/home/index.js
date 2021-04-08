@@ -15,8 +15,8 @@ import Scroll from '~/components/common/scroll'
 import { HomeWrapper } from '../../components/home/style'
 
 const Home = memo((props) => {
-  const { recommendList, list: propsList } = props
-  const [ list, setList ] = useState(propsList)
+  const { recommendList } = props
+  const [ list, setList ] = useState([])
 
   return (
     <HomeWrapper>
@@ -45,12 +45,10 @@ const Home = memo((props) => {
 
 export const getServerSideProps = async () => {
   const recommendList = await getTopRecommned()
-  const res = await getArticleList();
 
   return {
     props: {
       recommendList: recommendList.data,
-      list: res.data,
     },
   };
 };

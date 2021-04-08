@@ -24,11 +24,11 @@ export default memo(function Notice() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  useEffect(() => {
-    if (Object.keys(userInfo).length !== 0) {
-      dispatch(getNoticeListAction());
-    }
-  }, [userInfo]);
+  // useEffect(() => {
+  //   if (Object.keys(userInfo).length !== 0) {
+  //     dispatch(getNoticeListAction());
+  //   }
+  // }, [userInfo]);
 
   const checkDetail = useCallback((item) => {
     dispatch(changeCheckDetail(item));
@@ -49,7 +49,8 @@ export default memo(function Notice() {
           subTitle="可能是因為您操作不當導致部分功能停用，請聯繫博主"
         />
       ) : (
-        <Scroll changeFun={async (offset, size) => await dispatch(getNoticeListAction(offset, size))} >
+        <Scroll changeFun={async (offset, size) => await dispatch(getNoticeListAction(offset, size))} 
+                checkLogin={true}>
           <List
             itemLayout="vertical"
             dataSource={noticeList}

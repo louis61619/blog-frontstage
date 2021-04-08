@@ -32,7 +32,7 @@ export function getUserInfo(userId) {
   })
 }
 
-export function getFavoriteList(offset, size) {
+export function getFavoriteList(offset=0, size=2) {
   return request({
     url: "/user/favoriteList",
     params: {
@@ -71,7 +71,7 @@ export function cancelFavorite(articleId) {
   })
 }
 
-export function getNoticeList(offset, size) {
+export function getNoticeList(offset=0, size=4) {
   return request({
     method: "GET",
     url: "/user/notice",

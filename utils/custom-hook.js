@@ -1,6 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import {debounce} from 'lodash';
 import { useRouter } from 'next/router'
+import {
+  getsUserInfoAction,
+  addFavoriteAction,
+  cancelFavoriteAction
+} from '~/store/user/actionCreators'
 
 export const useDebouncedEffect = (effect, delay, deps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,27 +41,43 @@ export const useCheckLogin = () => {
 };
 
 
-export const useLoadingSkeleton = () => {
-  const router = useRouter()
-  const [loading, setLoading] = useState(false);
+export const useFavoriteList = (userInfo, item) => {
+  const [ isFavorite, setIsFavorite ] = useState(false)
 
   useEffect(() => {
-    const handleRouteChange = (url, { shallow }) => {
-      console.log(
-        `App is changing to ${url} ${
-          shallow ? 'with' : 'without'
-        } shallow routing`
-      )
+    const favoriteList = userInfo?.favorite ? userInfo.favorite : []
+    const value = favoriteList.indexOf(item.id) !== -1
+    setIsFavorite(value)
+    isFavoriteRef.current = value
+  }, [userInfo])
+
+  const dispatch = useDispatch()
+
+  const isFavoriteRef = useRef(isFavorite)
+
+  const debouncedSave = useRef(debounce((nextValue) => {
+    // 判斷值有沒有被改變
+    if(isFavoriteRef.current === nextValue) return
+    // 如果被改變有兩種情況
+    // 1.加入
+    if(nextValue === true) {
+      dispatch(addFavoriteAction(item.id))
+    } else {
+      // 2.取消
+      dispatch(cancelFavoriteAction(item.id))
     }
+    
+    isFavoriteRef.current = nextValue
 
-    router.events.on('routeChangeStart', handleRouteChange)
+  }, 1000))
+		.current;
 
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method:
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange)
-    }
-  }, []);
+  const clickFavorite = useCallback(async (preValue) => {
+    if(Object.keys(userInfo).length === 0 ) return message.warning('請先登錄')
+    console.log(isFavorite)
+    setIsFavorite(!isFavorite)
+		debouncedSave(!isFavorite);
+  }, [userInfo, isFavorite])
 
-  return [loading]
+  return [isFavorite, clickFavorite]
 }

@@ -24,7 +24,7 @@ export const FavoriteWrapper = styled.div`
     .img-right {
       width: 100px;
       height: 100px;
-      object-fit: cover;
+      object-fit: contain;
 
       @media (max-width: 576px) {
         width: 100%;

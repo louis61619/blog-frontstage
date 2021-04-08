@@ -25,11 +25,13 @@ export default memo(function Favorite(props) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (Object.keys(userInfo).length !== 0) {
-      dispatch(getFavoriteListAction());
-    }
-  }, [userInfo]);
+  // useEffect(() => {
+  //   if (Object.keys(userInfo).length !== 0) {
+  //     dispatch(getFavoriteListAction()).then(res => {
+  //       // console.log(res)
+  //     });
+  //   }
+  // }, [userInfo]);
 
   const cancelFavorite = (id) => {
     console.log("刪除" + id);
@@ -38,7 +40,10 @@ export default memo(function Favorite(props) {
 
   return (
     <FavoriteWrapper>
-      <Scroll changeFun={async (offset, size) => await dispatch(getFavoriteListAction(offset, size))}>
+      <Scroll changeFun={(offset, size) => {
+        return dispatch(getFavoriteListAction(offset, size))
+      }}
+              checkLogin={true}>
         <List
           itemLayout="vertical"
           dataSource={favoriteList}

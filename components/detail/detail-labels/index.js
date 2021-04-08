@@ -1,14 +1,23 @@
 import React, { memo, useEffect } from "react";
-
+import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { MessageOutlined, BookOutlined, MessageFilled } from "@ant-design/icons";
+import { MessageOutlined, BookOutlined, MessageFilled, BookFilled } from "@ant-design/icons";
 import { Tag } from "antd";
 import { DetailLabelsWrapper } from "./style";
 
+import { useCheckLogin } from "~/utils/custom-hook";
+import { useFavoriteList } from '~/utils/custom-hook'
+
 export default memo(function DetailLabels(props) {
 
+  const router = useRouter();
+
   const { labels, commentRef } = props
+  const { id: articleId } = router?.query
+
+  const [isLogin, userInfo] = useCheckLogin()
+  const [ isFavorite, clickFavorite ] = useFavoriteList(userInfo, { id: Number(articleId) })
 
   return (
     <DetailLabelsWrapper>
@@ -29,9 +38,12 @@ export default memo(function DetailLabels(props) {
           })}
         </div>
         <div className="tools">
-          <MessageFilled onClick={e => commentRef.current.showDrawer()} />
-          {/* <MessageFilled /> */}
-          <BookOutlined />
+          <span>
+            <MessageFilled onClick={e => commentRef.current.showDrawer()} />
+          </span>
+          <span onClick={e => clickFavorite()}>
+            { isFavorite ? <BookFilled /> : <BookOutlined /> } 
+          </span>
         </div>
       </div>
     </DetailLabelsWrapper>

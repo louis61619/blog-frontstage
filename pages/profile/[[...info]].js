@@ -2,10 +2,10 @@ import React, { memo, useCallback, useEffect, useState, Fragment, useRef } from 
 import ReactDOM from "react-dom";
 
 import Head from "next/head";
-
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+
 import ImgCrop from 'antd-img-crop';
 import {
   getUserInfoAction,
@@ -46,10 +46,10 @@ function beforeUpload(file) {
   return isJpgOrPng && isLt2M;
 }
 
-
 export default memo(function Profile(props) {
   const router = useRouter();
   const { info } = router.query;
+  const [ session, loading ] = useSession()
 
   const { userInfo, favoriteList } = useSelector(
     (state) => ({
@@ -125,12 +125,6 @@ export default memo(function Profile(props) {
       }
     })
   }
-
-  // const onUpload = () => {
-  //   const dom = ReactDOM.findDOMNode(uploadRef.current.upload);
-  //   dom.click()
-  // }
-
 
   return (
     <ProfileWrapper>
@@ -213,8 +207,19 @@ export default memo(function Profile(props) {
   );
 });
 
-export const getServerSideProps = async ({ params }) => {
-  const { info } = params;
+export const getServerSideProps = async (props) => {
+  const { info } = props?.params;
+  const session = await getSession(props)
+
+  if(!session) {
+    return {
+      redirect: {
+        source: "/profile",
+        destination: "/home",
+        permanent: false,
+      },
+    }
+  }
 
   if (!info) {
     return {
@@ -229,6 +234,7 @@ export const getServerSideProps = async ({ params }) => {
   return {
     props: {
       info,
+      session
     },
   };
 };

@@ -16,15 +16,14 @@ import Scroll from '~/components/common/scroll'
 import { ArticleWrapper } from '../../components/article/style'
 
 const Home = memo((props) => {
-  const {list: propsList, labels} = props
+  const { labels } = props
   const router = useRouter()
   const { id } = router.query
 
-  const [list, setList] = useState()
+  const [list, setList] = useState([])
   const [changeFun, setChangeFun] = useState()
 
   useEffect(() => {
-    setList(propsList)
     if(id?.length) {
       setChangeFun(() => {
         return async (offset, size) => await getArticleByLabelId(id[0], offset, size)
@@ -34,7 +33,7 @@ const Home = memo((props) => {
         return getArticleList
       });
     }
-  }, [propsList])
+  }, [])
 
   return (
     <ArticleWrapper>
@@ -62,16 +61,10 @@ const Home = memo((props) => {
 
 export const getServerSideProps = async ({query}) => {
   const {id} = query
-  let list
-  if(id) {
-    list = await getArticleByLabelId(id)
-  } else {
-    list = await getArticleList();
-  }
+
   const labels = await getLabels()
   return {
     props: {
-      list: list.data,
       labels: labels.data,
     },
   };

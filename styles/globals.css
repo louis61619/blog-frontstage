@@ -90,6 +90,6 @@ h4 {
 }
 
 .comment-drawer .ant-drawer-content-wrapper {
-  max-width: 414px;
-  min-width: 40%;
+  min-width: 320px;
+  width: 40%!important;
 }

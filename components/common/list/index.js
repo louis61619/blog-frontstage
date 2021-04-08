@@ -1,10 +1,10 @@
 import React, { Fragment, memo, useCallback, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import {debounce} from 'lodash';
+
 import store from '~/store'
 
 import { addFavorite } from '~/services/user'
-import { useDebouncedEffect } from '~/utils/custom-hook'
+import { useFavoriteList } from '~/utils/custom-hook'
 import {
   getsUserInfoAction,
   addFavoriteAction,
@@ -29,46 +29,12 @@ import { ListWrapper } from "./style";
 
 const ListItem = (props) => {
   const { item, userInfo } = props
-  const [ isFavorite, setIsFavorite ] = useState(false)
-
-  useEffect(() => {
-    const favoriteList = userInfo?.favorite ? userInfo.favorite : []
-    const value = favoriteList.indexOf(item.id) !== -1
-    setIsFavorite(value)
-    isFavoriteRef.current = value
-  }, [userInfo])
-
-  const dispatch = useDispatch()
-
-  const isFavoriteRef = useRef(isFavorite)
-
-  const debouncedSave = useRef(debounce((nextValue) => {
-    // 判斷值有沒有被改變
-    if(isFavoriteRef.current === nextValue) return
-    // 如果被改變有兩種情況
-    // 1.加入
-    if(nextValue === true) {
-      dispatch(addFavoriteAction(item.id))
-    } else {
-      // 2.取消
-      dispatch(cancelFavoriteAction(item.id))
-    }
-    
-    isFavoriteRef.current = nextValue
-
-  }, 1000))
-		.current;
-
-  const clickFavorite = useCallback(async (preValue) => {
-    if(Object.keys(userInfo).length === 0 ) return message.warning('請先登錄')
-    setIsFavorite(!isFavorite)
-		debouncedSave(!isFavorite);
-  }, [userInfo, isFavorite])
+  const [ isFavorite, clickFavorite ] = useFavoriteList(userInfo, item)
 
   return (
     <List.Item className="list-item">
     <Link href={{ pathname: "/detail", query: { id: item.id } }}>
-      <a>
+      <a target="_blank">
         <div className="item-top">
           <p>{moment(item.releaseTime).format("YYYY-MM-DD")}</p>
           <h2 className="title">{item.title}</h2>
