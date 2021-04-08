@@ -17,7 +17,6 @@ export default memo(function MarkdownNav(props) {
   }), shallowEqual)
 
   const handleScroll = () => {
-    // console.log(markNavRef)
     const dom = ReactDOM.findDOMNode(markNavRef.current);
     // console.log("NAV" + dom.getBoundingClientRect().height);
     // console.log(recommendScrollTop)

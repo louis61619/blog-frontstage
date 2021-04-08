@@ -40,6 +40,8 @@ export default memo(function Header(props) {
   const menu = (
     <MenuWrapper
       selectedKeys={router.asPath}
+      mode="horizontal"
+      triggerSubMenuAction="click"
       style={{
         display: "flex",
         justifyContent: "flex-end",
@@ -50,7 +52,7 @@ export default memo(function Header(props) {
         <Link href="/article">
           <a>
             <SnippetsOutlined />
-            文章
+            <span className="menu-text">文章</span>
           </a>
         </Link>
       </Menu.Item>
@@ -58,12 +60,12 @@ export default memo(function Header(props) {
         {isLogin ? (
           <>
             <UserOutlined />
-            用戶
+            <span className="menu-text">用戶</span>
           </>
         ) : (
           <>
             <LoginOutlined />
-            登錄
+            <span className="menu-text">登錄</span>
           </>
         )}
       </Menu.Item>
@@ -78,7 +80,7 @@ export default memo(function Header(props) {
         align="middle"
         style={{ height: "100%", flexWrap: "nowrap" }}
       >
-        <Col xs={21} sm={22} md={10} lg={17} xl={12} style={{ zIndex: 1 }}>
+        <Col xs={19} sm={20} md={10} lg={17} xl={12} style={{ zIndex: 1 }}>
           <div className="header-title">
             <span className="header-logo">
               <Link href="/home">
@@ -88,14 +90,14 @@ export default memo(function Header(props) {
             <span className="header-text">welcome to my blog</span>
           </div>
         </Col>
-        <Col xs={0} sm={0} md={13} lg={6} xl={6}>
+        <Col xs={4} sm={3} md={13} lg={6} xl={6}>
           {menu}
         </Col>
-        <Col xs={2} sm={1} md={0} lg={0} xl={0}>
+        {/* <Col xs={2} sm={1} md={0} lg={0} xl={0}>
           <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
             <AlignRightOutlined className="menu-icon" />
           </Dropdown>
-        </Col>
+        </Col> */}
       </Row>
       <Login ref={loginRef} providers={providers} />
     </HeaderWrapper>

@@ -36,31 +36,41 @@ export const HeaderWrapper = styled.div`
     color: #999;
     display: inline-block;
     padding-left: 1rem;
-  }
 
-  .menu-div {
-    display: flex;
-
-    .ant-menu {
-      line-height: 2.8rem;
-    }
-
-    .ant-menu-item {
-      font-size: 1rem !important;
-      padding-left: 1rem;
-      padding-right: 1rem;
+    @media (max-width: 576px) {
+      display: none;
     }
   }
-  .menu-icon {
-    font-size: 1.5rem;
-  }
+
 `;
 
 export const MenuWrapper = styled(Menu)`
   border-right: none;
-  font-size: 1rem;
-  @media (max-width: 767px) {
+
+  .ant-menu-item {
+    margin-top: 8px;
+  }
+  
+  @media (max-width: 767px) {  
+    .menu-text {
+      display: none;
+    }
+    /* .ant-menu-item {
+      padding: 0 8px;
+      
+    } */
+    /* .anticon {
+      margin: 0 6px;
+    } */
+    .ant-menu-submenu {
+      font-size: 1.5rem;
+    }
+  }
+  .anticon {
+    font-size: 1.2rem;
+  }
+  /* @media (max-width: 767px) {
     flex-direction: column;
     font-size: 1rem;
-  }
+  } */
 `;
