@@ -84,7 +84,7 @@ export default memo(function Header(props) {
           <div className="header-title">
             <span className="header-logo">
               <Link href="/home">
-                <img width="125" height="60" src="/logo.png" />
+                <img width="125" src="/logo.png" />
               </Link>
             </span>
             <span className="header-text">welcome to my blog</span>
