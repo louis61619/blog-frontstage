@@ -23,7 +23,8 @@ export const HeaderWrapper = styled.div`
     position: relative;
     cursor: pointer;
     width: 125px;
-    
+    margin-left: 12px;
+
     img {
       object-fit: cover;
       width: 100%;

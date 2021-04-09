@@ -12,6 +12,10 @@ export const DetailLabelsWrapper = styled.div`
     .tools {
       display: flex;
       align-items: center;
+
+      &>span {
+        cursor: pointer;
+      }
       .anticon {
         font-size: 2rem;
         margin-right: 1rem;

@@ -40,10 +40,12 @@ export default memo(function Favorite(props) {
 
   return (
     <FavoriteWrapper>
-      <Scroll changeFun={(offset, size) => {
-        return dispatch(getFavoriteListAction(offset, size))
-      }}
-              checkLogin={true}>
+      <Scroll
+        changeFun={(offset, size) => {
+          return dispatch(getFavoriteListAction(offset, size));
+        }}
+        checkLogin={true}
+      >
         <List
           itemLayout="vertical"
           dataSource={favoriteList}
@@ -51,15 +53,15 @@ export default memo(function Favorite(props) {
             <List.Item
               className="list-item"
               extra={
-                <img
-                  className="img-right"
-                  alt="logo"
-                  src={
-                    item.images
-                      ? JSON.parse(item.images)[0]
-                      : "/coding.jpeg"
-                  }
-                />
+                <Link href={{ pathname: "/detail", query: { id: item.id } }}>
+                  <img
+                    className="img-right"
+                    alt="blog"
+                    src={
+                      item.images ? JSON.parse(item.images)[0] : "/coding.jpeg"
+                    }
+                  />
+                </Link>
               }
             >
               <Link href={{ pathname: "/detail", query: { id: item.id } }}>

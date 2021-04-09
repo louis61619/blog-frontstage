@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { useRouter } from 'next/router'
 import { getArticleList } from '~/services/home'
@@ -18,12 +18,15 @@ import { ArticleWrapper } from '../../components/article/style'
 const Home = memo((props) => {
   const { labels } = props
   const router = useRouter()
+  const scrollRef = useRef()
   const { id } = router.query
 
   const [list, setList] = useState([])
   const [changeFun, setChangeFun] = useState()
 
   useEffect(() => {
+    console.log(scrollRef)
+    scrollRef.current.reset()
     if(id?.length) {
       setChangeFun(() => {
         return async (offset, size) => await getArticleByLabelId(id[0], offset, size)
@@ -33,7 +36,7 @@ const Home = memo((props) => {
         return getArticleList
       });
     }
-  }, [])
+  }, [id])
 
   return (
     <ArticleWrapper>
@@ -43,7 +46,7 @@ const Home = memo((props) => {
       <Row className="comm-main" type="flex" justify="center">
         <Col className="comm-left" xs={23} sm={23} md={15} lg={16} xl={12}>
           <ArticleLabel labels={labels} />
-          <Scroll list={list} setList={setList} changeFun={changeFun}>
+          <Scroll list={list} setList={setList} changeFun={changeFun} ref={scrollRef}>
             <List list={list}/>
           </Scroll>
         </Col>
@@ -59,9 +62,7 @@ const Home = memo((props) => {
 });
 
 
-export const getServerSideProps = async ({query}) => {
-  const {id} = query
-
+export const getServerSideProps = async () => {
   const labels = await getLabels()
   return {
     props: {

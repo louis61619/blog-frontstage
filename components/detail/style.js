@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
 export const DetailWrapper = styled.div`
+
+  .recommend {
+    margin-top: 80px;
+  }
+  
   .list-item {
     padding-right: 1rem;
     padding-left: 1rem;

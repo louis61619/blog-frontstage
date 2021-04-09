@@ -114,7 +114,6 @@ export const getFavoriteListAction = (offset, size) => {
     if(!offset) dispatch(changeFavoriteList([]))
     const list = getState().getIn(["user", "favoriteList"])
     const res = await getFavoriteList(offset, size)
-    console.log("我是action", res)
     if(res.data === "is not login") return {data: []}
     dispatch(changeFavoriteList([...list, ...res.data]))
     return res

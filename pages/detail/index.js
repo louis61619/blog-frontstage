@@ -101,11 +101,11 @@ const Detail = memo((props) => {
         </Col>
       </Row>
 
-      <Row className="comm-main" type="flex" justify="center">
+      <Row className="comm-main recommend" type="flex" justify="center">
         <Col xs={0} sm={0} md={23} lg={23} xl={18}>
           <DetailRecommend recommend={recommend} />
         </Col>
-        <Col className="comm-right" xs={23} sm={23} md={0} lg={0} xl={0}>
+        <Col xs={23} sm={23} md={0} lg={0} xl={0}>
           {recommendList(recommend)}
         </Col>
       </Row>

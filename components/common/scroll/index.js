@@ -1,4 +1,4 @@
-import React, { memo, useState, useReducer, useEffect } from "react";
+import React, { memo, useState, useReducer, useEffect, forwardRef, useImperativeHandle } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 
 import { Spin } from 'antd';
@@ -13,7 +13,7 @@ import { useCheckLogin } from "~/utils/custom-hook";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-export default memo(function Scroll({ children, list, setList, changeFun, checkLogin }) {
+export default memo(forwardRef(function Scroll({ children, list, setList, changeFun, checkLogin }, ref) {
   const [firstLoad, setFirstLoad] = useState(false)
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
@@ -22,6 +22,16 @@ export default memo(function Scroll({ children, list, setList, changeFun, checkL
   const dispatch = useDispatch()
 
   const [isLogin, userInfo] = useCheckLogin()
+
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      setLoading(true)
+      setHasMore(true)
+      setList([])
+      setPage(0)
+      setFirstLoad(true)
+    } 
+  }))
 
   useEffect(() => {
     // 初次加載鑑定權限
@@ -66,4 +76,4 @@ export default memo(function Scroll({ children, list, setList, changeFun, checkL
       </InfiniteScroll>
     </ScrollWrapper>
   );
-});
+}));

@@ -47,8 +47,15 @@ export const HomeRecommendWrapper = styled.div`
     margin-bottom: 10px;
     display: flex;
 
-    @media (max-width: 376px) {
-        /* display: none; */
+    @media (max-width: 576px) {
+      .ant-list-item-main {
+        min-width: 0;
+      }
+    }
+
+
+    /* @media (max-width: 376px) {
+        display: none;
       .ant-list-item-extra {
         width: 100%;
         .img-right {
@@ -56,7 +63,7 @@ export const HomeRecommendWrapper = styled.div`
           padding-bottom: 60%;
         }
       }
-    }
+    } */
 
     h4 {
         font-size: 1rem;

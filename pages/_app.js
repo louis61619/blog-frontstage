@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <Header />
         <Auth session={pageProps.session}>
-          <Component {...pageProps} key={router.asPath} />
+          <Component {...pageProps} />
         </Auth>
         {/* <Footer /> */}
       </Provider>
