@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withBundleAnalyzer(withPWA({
+module.exports = withPWA(withBundleAnalyzer({
   webpack: config => {
     config.resolve.alias['~'] = path.resolve(__dirname);
     return config;
@@ -23,8 +23,14 @@ module.exports = withBundleAnalyzer(withPWA({
     domains: ['coderland.ml', 'localhost'],
   },
   pwa: {
-    disable: process.env.NODE_ENV === 'development',
+    // disable: process.env.NODE_ENV === 'development',
     dest: 'public',
-    swSrc: 'service-worker.js'
+    // fallbacks: {
+    //   image: '/fallback.png',
+    //   // document: '/other-offline',  // if you want to fallback to a custom    page other than /_offline
+    //   // font: '/static/font/fallback.woff2',
+    //   // audio: ...,
+    //   // video: ...,
+    // },
   },
 }));

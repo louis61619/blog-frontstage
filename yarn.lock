@@ -3759,14 +3759,15 @@ next-auth@^3.4.2:
     require_optional "^1.0.1"
     typeorm "^0.2.30"
 
-next-pwa@^5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-5.1.3.tgz#4710691a2fffeee8b9afabfbd1b8325901265146"
-  integrity sha512-6Bgt6FEWfCyYmP4D1mOosL2AhOu/KQbS826o3ZPIgD4nQQd0Nj6omjrzaosY2GuGEUf7ELkFvZf8lTQ+ESoLHg==
+next-pwa@^5.2.5:
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-5.2.5.tgz#475e364ef06546c3370f68f74f65f2601cbb6ee6"
+  integrity sha512-N7pX8zonoRe3UX3Yb3FPeA6YjTSvgDMONP5D2+ta0VcMOqvuw8Eqxz/Zksnj56B7fc64JWIHf8s45yFW8/OWDw==
   dependencies:
     babel-loader "^8.2.2"
     clean-webpack-plugin "^3.0.0"
     globby "^11.0.3"
+    terser-webpack-plugin "^5.1.1"
     workbox-webpack-plugin "^6.1.2"
     workbox-window "^6.1.2"
 
