@@ -50,6 +50,7 @@ export const getStaticProps = async () => {
     props: {
       recommendList: recommendList.data,
     },
+    revalidate: 1,
   };
 };
 
