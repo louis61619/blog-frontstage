@@ -31,7 +31,7 @@ const HomeRecommend = memo((props) => {
         itemLayout="vertical"
         dataSource={list}
         renderItem={(item) => (
-          <Link href={{ pathname: "/detail", query: { id: item.id } }}>
+          <Link href={`/detail/${item.id}`}>
             <a>
               <List.Item
                 className="list-item"

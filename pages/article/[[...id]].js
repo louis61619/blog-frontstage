@@ -25,7 +25,6 @@ const Home = memo((props) => {
   const [changeFun, setChangeFun] = useState()
 
   useEffect(() => {
-    console.log(scrollRef)
     scrollRef.current.reset()
     if(id?.length) {
       setChangeFun(() => {
@@ -62,7 +61,7 @@ const Home = memo((props) => {
 });
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const labels = await getLabels()
   return {
     props: {

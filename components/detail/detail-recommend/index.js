@@ -58,9 +58,9 @@ export default memo(function DetailRecommend(props) {
     <DetailRecommendWrapper ref={recommendRef}>
       <List
         grid={{ gutter: 16, column: 3 }}
-        dataSource={recommend}
+        dataSource={recommend || []}
         renderItem={(item) => (
-          <Link href={{ pathname: "/detail", query: { id: item.id } }}>
+          <Link href={`/detail/${item.id}`}>
             <a>
               <List.Item>
                 <Card

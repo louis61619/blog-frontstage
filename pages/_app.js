@@ -1,10 +1,9 @@
-import React, { Fragment } from "react";
-import Head from "next/head";
-import { useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { Fragment, useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
+import Head from "next/head";
 import { withRouter, useRouter } from "next/router";
 import Router from "next/router";
+import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import NProgress from "nprogress";
 
 import { useStore } from "~/store";

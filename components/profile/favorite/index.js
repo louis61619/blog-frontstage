@@ -53,7 +53,7 @@ export default memo(function Favorite(props) {
             <List.Item
               className="list-item"
               extra={
-                <Link href={{ pathname: "/detail", query: { id: item.id } }}>
+                <Link href={`/detail/${item.id}`}>
                   <img
                     className="img-right"
                     alt="blog"
@@ -64,7 +64,7 @@ export default memo(function Favorite(props) {
                 </Link>
               }
             >
-              <Link href={{ pathname: "/detail", query: { id: item.id } }}>
+              <Link href={`/detail/${item.id}`}>
                 <a>
                   <div className="left-item">
                     <p>{moment(item.releaseTime).format("YYYY-MM-DD")}</p>

@@ -28,9 +28,9 @@ const recommendList = (list) => {
   return (
     <List
       itemLayout="vertical"
-      dataSource={list}
+      dataSource={list || []}
       renderItem={(item) => (
-        <Link href={{ pathname: "/detail", query: { id: item.id } }}>
+        <Link href={`/detail/${item.id}`}>
           <a>
             <List.Item
               className="list-item"
@@ -61,9 +61,10 @@ const recommendList = (list) => {
 
 
 const Detail = memo((props) => {
-  const { article, recommend } = props;
+  const { article } = props;
   const commentRef = useRef()
   const [container, setContainer] = useState(null);
+  const [recommend, setRecommend] = useState(null)
 
   const {
     checkDetail
@@ -79,6 +80,12 @@ const Detail = memo((props) => {
       dispatch(changeCheckDetail({}))
     }
   }, [checkDetail])
+
+  useEffect(async () => {
+    const res = await getDetailRecommend()
+    setRecommend(res.data)
+    console.log(res)
+  }, [])
 
   return (
     <DetailWrapper>
@@ -117,16 +124,38 @@ const Detail = memo((props) => {
   );
 });
 
-export const getServerSideProps = async ({ query }) => {
-  const { id } = query;
+export const getServerSideProps = async ({ params }) => {
+  const { id } = params;
   const res = await getArticleById(id);
-  const recommend = await getDetailRecommend()
+  
   return {
     props: {
       article: res.data,
-      recommend: recommend.data
     },
   };
 };
+
+// export const getStaticPaths = async () => {
+//   const res = await getArticleList()
+
+//   const paths = res.data.map(item => ({
+//     params: { id: `${item.id}` },
+//   }))
+//   console.log(paths)
+
+//   return { paths, fallback: false }
+// }
+
+// export const getStaticProps = async ({params}) => {
+//   console.log(params)
+
+//   const res = await getArticleById(params.id);
+
+//   return {
+//     props: {
+//       article: res.data,
+//     }
+//   }
+// }
 
 export default Detail;

@@ -43,7 +43,7 @@ const Home = memo((props) => {
 });
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const recommendList = await getTopRecommned()
 
   return {

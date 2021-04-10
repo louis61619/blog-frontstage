@@ -18,6 +18,7 @@ export const DetailArticleWrapper = styled.div`
   .detail-introduce {
     font-size: 1.4rem;
     text-align: center;
+    font-weight: 400;
     color: rgba(117, 117, 117, 1);
 
     @media (max-width: 576px) {

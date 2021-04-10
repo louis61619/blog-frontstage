@@ -14,12 +14,12 @@ const DetailArticle = (props) => {
 
   return (
     <DetailArticleWrapper>
-      <div className="detailed-title">
+      <h1 className="detailed-title">
         { article.title }
-      </div>
-      <div className="detail-introduce">
+      </h1>
+      <h2 className="detail-introduce">
         { article.introduce }
-      </div>
+      </h2>
       <div className="list-icon center">
         <span>
           <CalendarOutlined />

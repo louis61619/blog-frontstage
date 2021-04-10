@@ -10,6 +10,7 @@ export const DetailWrapper = styled.div`
     padding-right: 1rem;
     padding-left: 1rem;
     margin-bottom: 10px;
+    min-height: 150px;
 
     .img-center {
       width: 270px;
