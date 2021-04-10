@@ -22,7 +22,7 @@ const options = {
     //   return baseUrl
     // },
     async signIn(user, account, profile) {
-      console.log("singinuser:", user);
+      // console.log("singinuser:", user);
       const { name, email, image } = user;
       const token = jwt.sign(user, "123456", {
         expiresIn: 60,
@@ -34,7 +34,7 @@ const options = {
       return true;
     },
     async jwt(token, user, account, profile, isNewUser) {
-      console.log("jwtuser", user)
+      // console.log("jwtuser", user)
       if (user) {
         const { id, name, email, image, accessToken } = user;
         token = { 
@@ -44,7 +44,7 @@ const options = {
       return token;
     },
     async session(session, token) {
-      console.log("sessionuser", token)
+      // console.log("sessionuser", token)
       const { id, name, email, image, accessToken } = token;
       session.user = {
         id, name, email, image, accessToken

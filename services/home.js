@@ -16,6 +16,12 @@ export function getArticleList(offset=0, size=4) {
   })
 }
 
+export function getStaticList() {
+  return request({
+    url: "/default/getStaticList"
+  })
+}
+
 export function getArticleById(id) {
   return request({
     url: "/default/getArticleById",

@@ -26,7 +26,7 @@ export const ListWrapper = styled.div`
         font-size: 2rem;
         border-left: 4px solid rgb(156, 203, 250);
         padding-left: 1rem;
-        font-weight: 600;
+        font-weight: 700;
 
         @media (max-width: 576px) {
           font-size: 1.4rem;
@@ -51,6 +51,7 @@ export const ListWrapper = styled.div`
         }
         .ant-tag {
           padding: 2px 5px;
+          cursor: pointer;
         }
       }
       .favorite {

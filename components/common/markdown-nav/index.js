@@ -38,7 +38,7 @@ export default memo(function MarkdownNav(props) {
         ref={markNavRef}
         className="article-menu"
         updateHashAuto={false}
-        source={"#title" + props.markdown}
+        source={"#title\n" + props.markdown}
         ordered={false}
       />
     </MarkdownNavWrapper>

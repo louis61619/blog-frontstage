@@ -45,7 +45,6 @@ const Home = memo((props) => {
 
 export const getStaticProps = async () => {
   const recommendList = await getTopRecommned()
-
   return {
     props: {
       recommendList: recommendList.data,

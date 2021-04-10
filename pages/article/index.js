@@ -61,7 +61,7 @@ const Home = memo((props) => {
 });
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const labels = await getLabels()
   return {
     props: {

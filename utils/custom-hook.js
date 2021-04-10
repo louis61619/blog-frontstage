@@ -8,6 +8,8 @@ import {
   cancelFavoriteAction
 } from '~/store/user/actionCreators'
 
+import { message } from 'antd'
+
 export const useDebouncedEffect = (effect, delay, deps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const callback = useCallback(effect, deps);
@@ -74,7 +76,6 @@ export const useFavoriteList = (userInfo, item) => {
 
   const clickFavorite = useCallback(async (preValue) => {
     if(Object.keys(userInfo).length === 0 ) return message.warning('請先登錄')
-    console.log(isFavorite)
     setIsFavorite(!isFavorite)
 		debouncedSave(!isFavorite);
   }, [userInfo, isFavorite])

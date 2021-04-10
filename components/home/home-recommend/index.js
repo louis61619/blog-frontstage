@@ -67,7 +67,7 @@ const HomeRecommend = memo((props) => {
     <HomeRecommendWrapper>
       <Row className="comm-main" type="flex" justify="center">
         <Col className="comm-left" xs={0} sm={0} md={13} lg={14} xl={10}>
-          <Link href={{ pathname: "/detail", query: { id: firstItem.id } }}>
+          <Link href={`/detail/${firstItem.id}`}>
             <a>
               <div className="first-item">
                 <div className="img-block">

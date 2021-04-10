@@ -1,10 +1,10 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import Head from "next/head";
-
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { getArticleById, getArticleList } from "~/services/home";
+import { getArticleById, getStaticList } from "~/services/home";
 import { getDetailRecommend } from '~/services/article'
 import marked from "~/utils/markdown-formate";
 import moment from 'moment'
@@ -65,6 +65,11 @@ const Detail = memo((props) => {
   const commentRef = useRef()
   const [container, setContainer] = useState(null);
   const [recommend, setRecommend] = useState(null)
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   const {
     checkDetail
@@ -124,38 +129,37 @@ const Detail = memo((props) => {
   );
 });
 
-export const getServerSideProps = async ({ params }) => {
-  const { id } = params;
-  const res = await getArticleById(id);
+// export const getServerSideProps = async ({ params }) => {
+//   const { id } = params;
+//   const res = await getArticleById(id);
   
+//   return {
+//     props: {
+//       article: res.data,
+//     },
+//   };
+// };
+
+export const getStaticPaths = async () => {
+  const res = await getStaticList()
+
+  const paths = res.data.map(item => ({
+    params: { id: `${item.id}` },
+  }))
+
+  return { paths, fallback: true }
+}
+
+export const getStaticProps = async ({params}) => {
+
+  const res = await getArticleById(params.id);
+
   return {
     props: {
       article: res.data,
     },
-  };
-};
-
-// export const getStaticPaths = async () => {
-//   const res = await getArticleList()
-
-//   const paths = res.data.map(item => ({
-//     params: { id: `${item.id}` },
-//   }))
-//   console.log(paths)
-
-//   return { paths, fallback: false }
-// }
-
-// export const getStaticProps = async ({params}) => {
-//   console.log(params)
-
-//   const res = await getArticleById(params.id);
-
-//   return {
-//     props: {
-//       article: res.data,
-//     }
-//   }
-// }
+    revalidate: 1,
+  }
+}
 
 export default Detail;

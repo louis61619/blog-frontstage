@@ -1,6 +1,9 @@
 import React, { Fragment, memo, useCallback, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
+import Link from "next/link";
+import { useRouter } from 'next/router'
+
 import store from '~/store'
 
 import { addFavorite } from '~/services/user'
@@ -11,7 +14,6 @@ import {
   cancelFavoriteAction
 } from '~/store/user/actionCreators'
 
-import Link from "next/link";
 import moment from "moment";
 import marked from "~/utils/markdown-formate";
 
@@ -30,6 +32,7 @@ import { ListWrapper } from "./style";
 const ListItem = (props) => {
   const { item, userInfo } = props
   const [ isFavorite, clickFavorite ] = useFavoriteList(userInfo, item)
+  const router = useRouter()
 
   return (
     <List.Item className="list-item">
@@ -55,7 +58,12 @@ const ListItem = (props) => {
         {item.labels &&
           JSON.parse(item.labels).map((item) => {
             return (
-              <Tag className="tag" key={item.id}>
+              <Tag className="tag" key={item.id} onClick={e => {
+                router.push({
+                  pathname: '/article',
+                  query: { id: item.id },
+                })        
+              }}>
                 {item.name}
               </Tag>
             );
