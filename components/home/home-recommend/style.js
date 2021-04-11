@@ -36,7 +36,6 @@ export const HomeRecommendWrapper = styled.div`
 
       & > * {
         margin-bottom: 5px;
-
       }
     }
   }
@@ -48,11 +47,16 @@ export const HomeRecommendWrapper = styled.div`
     display: flex;
 
     @media (max-width: 576px) {
+      .ant-list-item-extra {
+        margin: auto auto 8px;
+      }
       .ant-list-item-main {
         min-width: 0;
+        /* display: flex;
+        flex-direction: column;
+        align-items: center; */
       }
     }
-
 
     /* @media (max-width: 376px) {
         display: none;
@@ -66,8 +70,8 @@ export const HomeRecommendWrapper = styled.div`
     } */
 
     h4 {
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+    }
 
     & > :nth-child(1) {
       width: calc(100% - 140px);
@@ -79,8 +83,6 @@ export const HomeRecommendWrapper = styled.div`
       height: 100px;
       position: relative;
 
-      
-      
       img {
         object-fit: contain;
       }
@@ -99,8 +101,11 @@ export const HomeRecommendWrapper = styled.div`
 
     .left-item {
       position: relative;
-
       overflow: hidden;
+
+      & > * {
+        margin-bottom: 5px;
+      }
 
       .introduce {
         white-space: nowrap;

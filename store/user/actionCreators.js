@@ -69,9 +69,15 @@ export const getUserInfoAction = () => {
     if(res === null) {
       return dispatch(changeUserSession({}))
     }
+    // dispatch(changeUserSession(res?.user))
+    // // 獲取資料
+    // const userInfo = await getUserInfo(res?.user.id)
+    // // userInfo.favorite = JSON.parse(userInfo?.favorite)
+    // if(userInfo?.favorite) {
+    //   userInfo.favorite = JSON.parse(userInfo.favorite)
+    // }
     dispatch(changeUserSession(res?.user))
-    // 獲取資料
-    const userInfo = await getUserInfo(res?.user.id)
+    const userInfo = {...res.user}
     // userInfo.favorite = JSON.parse(userInfo?.favorite)
     if(userInfo?.favorite) {
       userInfo.favorite = JSON.parse(userInfo.favorite)

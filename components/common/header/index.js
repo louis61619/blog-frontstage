@@ -48,23 +48,29 @@ export default memo(function Header(props) {
         borderBottom: "none",
       }}
     >
-      <Menu.Item key="/article">
+      {/* <Menu.Item key="/about">
         <Link href="/article">
           <a>
             <SnippetsOutlined />
             <span className="menu-text">文章</span>
           </a>
         </Link>
+      </Menu.Item> */}
+      <Menu.Item key="/article" icon={<SnippetsOutlined />}>
+        <Link href="/article">
+          <a>
+            
+            <span className="menu-text">文章</span>
+          </a>
+        </Link>
       </Menu.Item>
-      <Menu.Item key="/profile" onClick={login}>
+      <Menu.Item key="/profile" onClick={login} icon={isLogin? <UserOutlined />: <LoginOutlined />}>
         {isLogin ? (
           <>
-            <UserOutlined />
             <span className="menu-text">用戶</span>
           </>
         ) : (
           <>
-            <LoginOutlined />
             <span className="menu-text">登錄</span>
           </>
         )}
@@ -84,13 +90,13 @@ export default memo(function Header(props) {
           <div className="header-title">
             <span className="header-logo">
               <Link href="/home">
-                <img width="125" src="/logo.png" />
+                <img src="/logo.svg" />
               </Link>
             </span>
             <span className="header-text">welcome to my blog</span>
           </div>
         </Col>
-        <Col xs={4} sm={3} md={13} lg={6} xl={6}>
+        <Col xs={4} sm={3} md={13} lg={6} xl={6} className="right-tools">
           {menu}
         </Col>
         {/* <Col xs={2} sm={1} md={0} lg={0} xl={0}>

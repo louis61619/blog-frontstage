@@ -5,7 +5,7 @@ export const HeaderWrapper = styled.div`
   background-color: #fff;
   overflow: hidden;
   height: 65px;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
 
   .header-title {
     display: flex;
@@ -22,8 +22,8 @@ export const HeaderWrapper = styled.div`
     font-family: Arial Black; */
     position: relative;
     cursor: pointer;
-    width: 125px;
-    margin-left: 12px;
+    width: 215px;
+    /* margin-left: 12px; */
 
     img {
       object-fit: cover;
@@ -33,13 +33,25 @@ export const HeaderWrapper = styled.div`
   }
 
   .header-text {
-    font-size: 0.8rem;
+    font-size: .9rem;
     color: #999;
-    display: inline-block;
+    align-self: flex-end;
     padding-left: 1rem;
+    margin-bottom: 2px;
 
     @media (max-width: 576px) {
       display: none;
+    }
+  }
+
+  .right-tools {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+
+    & > ul {
+      width: 100%;
     }
   }
 
@@ -68,7 +80,7 @@ export const MenuWrapper = styled(Menu)`
     }
   }
   .anticon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   /* @media (max-width: 767px) {
     flex-direction: column;

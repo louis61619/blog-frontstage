@@ -3,7 +3,6 @@ import { Provider, useDispatch } from "react-redux";
 import Head from "next/head";
 import { withRouter, useRouter } from "next/router";
 import Router from "next/router";
-import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import NProgress from "nprogress";
 
 import { useStore } from "~/store";
@@ -17,7 +16,7 @@ import "../styles/progress.css";
 import Header from "~/components/common/header";
 import Footer from "~/components/common/footer";
 import Auth from "~/components/common/auth";
-import UnStyled from '~/components/common/unstyled'
+import UnStyled from "~/components/common/unstyled";
 
 Router.onRouteChangeStart = (url) => {
   NProgress.start();
@@ -34,7 +33,7 @@ function MyApp({ Component, pageProps }) {
       <UnStyled />
       <Provider store={store}>
         <Header />
-        <Auth session={pageProps.session}>
+        <Auth pageProps={pageProps}>
           <Component {...pageProps} />
         </Auth>
         {/* <Footer /> */}
@@ -44,3 +43,10 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+// MyApp.getInitialProps = async (appContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
+
+//   return { ...appProps }
+// }

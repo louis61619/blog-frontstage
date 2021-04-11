@@ -33,10 +33,7 @@ export default memo(function Notice() {
   const checkDetail = useCallback((item) => {
     dispatch(changeCheckDetail(item));
     router.push({
-      pathname: "/detail",
-      query: {
-        id: item.articleId,
-      },
+      pathname: `/detail/${item.articleId}`,
     });
   });
 

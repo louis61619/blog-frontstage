@@ -20,14 +20,14 @@ export function login(name, email, image, token) {
   })
 }
 
-export function getUserInfo(userId) {
+export function getUserInfo(userId, token) {
   return request({
     url: "/user/info",
     params: {
       userId
     },
     headers: {
-      'Authorization': getToken()
+      'Authorization': getToken() || token
     }
   })
 }

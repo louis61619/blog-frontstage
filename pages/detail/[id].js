@@ -89,7 +89,6 @@ const Detail = memo((props) => {
   useEffect(async () => {
     const res = await getDetailRecommend()
     setRecommend(res.data)
-    console.log(res)
   }, [])
 
   return (

@@ -1,7 +1,7 @@
 import React, { Fragment, memo, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
-import { Provider } from 'next-auth/client'
+import { useSession } from 'next-auth/client'
 
 import {
   getUserSessinAction,
@@ -22,5 +22,5 @@ export default memo(function Auth(props) {
     dispatch(changeVisitsCheckedAction())
   }, [])
 
-  return <Provider session={props.session} >{props.children}</Provider>;
+  return <>{props.children}</>;
 });

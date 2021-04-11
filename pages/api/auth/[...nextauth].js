@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import jwt from 'jsonwebtoken'
 
-import { login } from "~/services/user";
+import { login, getUserInfo } from "~/services/user";
 
 const options = {
   // Configure one or more authentication providers
@@ -28,7 +28,6 @@ const options = {
         expiresIn: 60,
       })
       const result = await login(name, email, image, token);
-      // console.log(result)
       user.id = result.id
       user.accessToken = result.token
       return true;
@@ -44,11 +43,17 @@ const options = {
       return token;
     },
     async session(session, token) {
-      // console.log("sessionuser", token)
+      // console.log("sessionuser",session, token)
+      // const { id, name, email, image, accessToken } = token;
+      // session.user = {
+      //   id, name, email, image, accessToken
+      // }
+
       const { id, name, email, image, accessToken } = token;
-      session.user = {
-        id, name, email, image, accessToken
-      }
+      const userInfo = await getUserInfo(id, accessToken)
+      userInfo.accessToken = accessToken
+      session.user = userInfo
+      console.log(userInfo)
       return session;
     },
   },

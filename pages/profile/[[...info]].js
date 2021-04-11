@@ -8,7 +8,6 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 import ImgCrop from 'antd-img-crop';
 import {
-  getUserInfoAction,
   getFavoriteListAction,
   resetUser,
   changeUserNameAction
@@ -50,6 +49,8 @@ export default memo(function Profile(props) {
   const router = useRouter();
   const { info } = router.query;
   const [ session, loading ] = useSession()
+
+  // console.log(session)
 
   const { userInfo, favoriteList } = useSelector(
     (state) => ({
@@ -209,17 +210,17 @@ export default memo(function Profile(props) {
 
 export const getServerSideProps = async (props) => {
   const { info } = props?.params;
-  const session = await getSession(props)
+  // const session = await getSession(props)
 
-  if(!session) {
-    return {
-      redirect: {
-        source: "/profile",
-        destination: "/home",
-        permanent: false,
-      },
-    }
-  }
+  // if(!session) {
+  //   return {
+  //     redirect: {
+  //       source: "/profile",
+  //       destination: "/home",
+  //       permanent: false,
+  //     },
+  //   }
+  // }
 
   if (!info) {
     return {
@@ -234,7 +235,7 @@ export const getServerSideProps = async (props) => {
   return {
     props: {
       info,
-      session
+      // session
     },
   };
 };

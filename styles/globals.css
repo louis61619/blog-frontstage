@@ -79,7 +79,7 @@ h4 {
   }
   
   h3 {
-    font-size: 1.2em;
+    font-size: 1.3em;
     line-height: 1.43;
   }
   
@@ -95,4 +95,8 @@ h4 {
 .comment-drawer .ant-drawer-content-wrapper {
   min-width: 320px;
   width: 40%!important;
+}
+
+.ant-menu-vertical.ant-menu-sub {
+  min-width: 120px;
 }
