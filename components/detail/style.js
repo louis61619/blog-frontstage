@@ -1,11 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const DetailWrapper = styled.div`
-
   .recommend {
     margin-top: 80px;
   }
-  
+
   .list-item {
     padding-right: 1rem;
     padding-left: 1rem;
@@ -27,6 +26,12 @@ export const DetailWrapper = styled.div`
       position: relative;
       height: 100%;
 
+      @media (max-width: 767px) {
+        h4 {
+          font-size: 1rem;
+        }
+      }
+
       & > * {
         margin-bottom: 5px;
 
@@ -41,7 +46,6 @@ export const DetailWrapper = styled.div`
 
             .anticon {
               margin-right: 5px;
-              
             }
           }
         }
@@ -53,4 +57,4 @@ export const DetailWrapper = styled.div`
       }
     }
   }
-`
+`;

@@ -27,8 +27,12 @@ export default memo(function DetailLabels(props) {
             return (
               <Link
                 key={item.id}
-                href="/article/[id]"
-                as={`/article/${item.id}`}
+                href={{
+                  pathname: '/article',
+                  query: {
+                    id: item.id
+                  }
+                }}
               >
                 <a>
                   <Tag>{item.name}</Tag>

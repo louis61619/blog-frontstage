@@ -22,11 +22,14 @@ export const HeaderWrapper = styled.div`
     font-family: Arial Black; */
     position: relative;
     cursor: pointer;
-    width: 215px;
-    /* margin-left: 12px; */
+    width: 180px;
+    margin-left: 12px;
+
+    @media (max-width: 512px) {
+      width: 150px;
+    }
 
     img {
-      object-fit: cover;
       width: 100%;
       height: 100%;
     }
@@ -47,7 +50,7 @@ export const HeaderWrapper = styled.div`
   .right-tools {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     height: 100%;
 
     & > ul {
@@ -68,16 +71,18 @@ export const MenuWrapper = styled(Menu)`
     .menu-text {
       display: none;
     }
-    /* .ant-menu-item {
-      padding: 0 8px;
-      
-    } */
-    /* .anticon {
-      margin: 0 6px;
-    } */
+    .ant-menu-submenu-selected {
+      color: rgba(0, 0, 0, 0.85)!important;
+    }
     .ant-menu-submenu {
       font-size: 1.5rem;
+      margin: 0!important;
+      border-bottom: none!important;
+      .anticon {
+        font-size: 1.4rem;
+      }
     }
+    
   }
   .anticon {
     font-size: 1.1rem;

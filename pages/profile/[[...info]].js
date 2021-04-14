@@ -130,7 +130,7 @@ export default memo(function Profile(props) {
   return (
     <ProfileWrapper>
       <Head>
-        <title>Coder Land - Profile</title>
+        <title>Profile</title>
       </Head>
 
       <Row className="comm-main" type="flex" justify="center">

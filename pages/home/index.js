@@ -23,7 +23,6 @@ const Home = memo((props) => {
       <Head>
         <title>Coder Land - Home</title>
       </Head>
-      {/* <HomeRecommend list={recommendList}/> */}
       <HomeRecommend list={recommendList} />
       <Row className="comm-main" type="flex" justify="center">
         <Col className="comm-left" xs={23} sm={23} md={15} lg={16} xl={12}>

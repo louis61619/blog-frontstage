@@ -4,7 +4,7 @@ import { FallbackWrapper } from '~/components/fallback/style'
 export default () => (
   <FallbackWrapper>
     <Head>
-      <title>fallback page</title>
+      <title>Fallback</title>
     </Head>
     <div
       className="content"

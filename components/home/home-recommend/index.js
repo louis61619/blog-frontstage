@@ -66,7 +66,7 @@ const HomeRecommend = memo((props) => {
   return (
     <HomeRecommendWrapper>
       <Row className="comm-main" type="flex" justify="center">
-        <Col className="comm-left" xs={0} sm={0} md={13} lg={14} xl={10}>
+        <Col className="comm-left" xs={0} sm={0} md={12} lg={14} xl={10}>
           <Link href={`/detail/${firstItem.id}`}>
             <a>
               <div className="first-item">
@@ -87,7 +87,7 @@ const HomeRecommend = memo((props) => {
           </Link>
         </Col>
 
-        <Col className="comm-right" xs={0} sm={0} md={10} lg={9} xl={8}>
+        <Col className="comm-right" xs={0} sm={0} md={11} lg={9} xl={8}>
           {recommendList(
             list.filter((item, index) => {
               return index !== 0;
