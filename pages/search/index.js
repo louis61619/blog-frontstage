@@ -14,7 +14,7 @@ export default memo(function Search() {
       <Row className="comm-main" type="flex" justify="center">
         <Col xs={23} sm={23} md={23} lg={23} xl={18}>
           <div className="search-form">
-            <input placeholder="Search Blog"/>
+            <input type="search" placeholder="Search Blog" />
           </div>
         </Col>
       </Row>
