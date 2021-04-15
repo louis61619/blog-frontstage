@@ -44,6 +44,7 @@ export default memo(function Header(props) {
       mode="horizontal"
       triggerSubMenuAction="click"
       overflowedIndicator={<AlignRightOutlined />}
+      forceSubMenuRender={true}
       style={{
         display: "flex",
         justifyContent: "flex-end",
