@@ -27,7 +27,7 @@ export default memo(function Header(props) {
 
   const login = () => {
     if (isLogin) {
-      router.push("/profile");
+      router.push("/profile/favorite");
     } else {
       loginRef.current.showModal(true);
     }
@@ -37,6 +37,10 @@ export default memo(function Header(props) {
     const providers = await getProviders();
     setProviders(providers);
   }, []);
+
+  useEffect(() => {
+    router.prefetch('/profile/favorite')
+  }, [])
 
   const menu = (
     <MenuWrapper
@@ -50,7 +54,7 @@ export default memo(function Header(props) {
         borderBottom: "none",
       }}
     >
-      <Menu.Item key="/search" icon={<SearchOutlined />}>
+      <Menu.Item key="/search/title" icon={<SearchOutlined />}>
         <Link href="/search">
           <a>
             <span className="menu-text">搜索</span>

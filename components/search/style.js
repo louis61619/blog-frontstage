@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 export const SearchWrapper = styled.div`
   .search-form {
-    margin: 0 1rem;
     /* border: 1px solid blue; */
-
+    margin-bottom: 32px;
+    @media (max-width: 767px) {
+      margin-bottom: 8px;
+    }
+    
+    @media (max-width: 767px) {
+      padding: 0 1rem;
+    }
     input {
       width: 100%;
       height: 80px;
@@ -19,6 +25,14 @@ export const SearchWrapper = styled.div`
       @media (max-width: 767px) {
         font-size: 34px;
         height: 50px;
+      }
+    }
+  }
+
+  .comm-left {
+    .comm-menu {
+      @media (max-width: 767px) {
+        padding: 0 1rem;
       }
     }
   }

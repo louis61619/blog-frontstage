@@ -1,8 +1,9 @@
-import React, { memo, useCallback, useEffect, useState, Fragment, useRef } from "react";
+import React, { memo, useCallback, useEffect, useState, Fragment, useRef, useLayoutEffect } from "react";
 import ReactDOM from "react-dom";
 
 import Head from "next/head";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
+// import Router from "next/router";
 import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
@@ -45,6 +46,7 @@ function beforeUpload(file) {
   return isJpgOrPng && isLt2M;
 }
 
+
 export default memo(function Profile(props) {
   const router = useRouter();
   const { info } = router.query;
@@ -59,7 +61,7 @@ export default memo(function Profile(props) {
     }),
     shallowEqual
   );
-  const [current, setCurrent] = useState(...info);
+  const [current, setCurrent] = useState(info);
   const [isEditName, setIsEditName] = useState(false)
   const [value, setValue] = useState(null)
   const [userImg, setUserImg] = useState(null)
@@ -68,8 +70,9 @@ export default memo(function Profile(props) {
   const uploadRef = useRef()
   const buttonRef = useRef()
 
+
   useEffect(() => {
-    setCurrent(...info);
+    setCurrent(info);
   }, [info]);
 
   const dispatch = useDispatch();
@@ -208,34 +211,19 @@ export default memo(function Profile(props) {
   );
 });
 
-export const getServerSideProps = async (props) => {
-  const { info } = props?.params;
-  // const session = await getSession(props)
+// export const getStaticPaths = () => {
+//   return {
+//     paths: [{ params: { info: 'favorite' } }, { params: { info: 'notice' } }],
+//     fallback: false,
+//   }
+// }
 
-  // if(!session) {
-  //   return {
-  //     redirect: {
-  //       source: "/profile",
-  //       destination: "/home",
-  //       permanent: false,
-  //     },
-  //   }
-  // }
+// export const getStaticProps = async ({params}) => {
+//   const { info } = params
 
-  if (!info) {
-    return {
-      redirect: {
-        source: "/profile",
-        destination: "/profile/favorite",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      info,
-      // session
-    },
-  };
-};
+//   return {
+//     props: {
+//       info,
+//     },
+//   };
+// };

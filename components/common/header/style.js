@@ -23,7 +23,10 @@ export const HeaderWrapper = styled.div`
     position: relative;
     cursor: pointer;
     width: 180px;
-    margin-left: 12px;
+
+    @media (max-width: 767px) {
+      margin-left: 1rem;
+    }
 
     @media (max-width: 512px) {
       width: 150px;

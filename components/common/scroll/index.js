@@ -43,7 +43,7 @@ export default memo(forwardRef(function Scroll({ children, list, setList, change
 
   const handleInfiniteOnLoad = async () => {
     setLoading(false)
-
+    
     setTimeout(() => {
       changeFun(page * 1, 1).then(res => {
         if(res.data.length === 0) {

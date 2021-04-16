@@ -26,9 +26,10 @@ const Home = memo((props) => {
 
   useEffect(() => {
     scrollRef.current.reset()
+    console.log(id)
     if(id?.length) {
       setChangeFun(() => {
-        return async (offset, size) => await getArticleByLabelId(id[0], offset, size)
+        return async (offset, size) => await getArticleByLabelId(id, offset, size)
       })
     } else {
       setChangeFun(() => {
