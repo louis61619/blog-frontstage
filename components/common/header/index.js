@@ -48,11 +48,6 @@ export default memo(function Header(props) {
       mode="horizontal"
       triggerSubMenuAction="click"
       overflowedIndicator={<AlignRightOutlined />}
-      style={{
-        display: "flex",
-        justifyContent: "flex-end",
-        borderBottom: "none",
-      }}
     >
       <Menu.Item key="/search" icon={<SearchOutlined />}>
         <Link href="/search/title">

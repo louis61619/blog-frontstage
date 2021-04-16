@@ -57,8 +57,15 @@ export const HeaderWrapper = styled.div`
     height: 100%;
 
     & > div {
-      width: 50px;
-      height: 50px;
+      width: 287px;
+
+      @media (max-width: 767px) {
+        width: 40px;
+      }
+
+      .ant-menu {
+        border-bottom: none;
+      }
     }
   }
 
