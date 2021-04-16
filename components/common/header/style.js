@@ -57,7 +57,8 @@ export const HeaderWrapper = styled.div`
     height: 100%;
 
     & > div {
-      width: 100%;
+      width: 50px;
+      height: 50px;
     }
   }
 
