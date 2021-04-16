@@ -21,7 +21,7 @@ const Home = memo((props) => {
   return (
     <HomeWrapper>
       <Head>
-        <title>Coder Land - Home</title>
+        <title>Coder Land</title>
       </Head>
       <HomeRecommend list={recommendList} />
       <Row className="comm-main" type="flex" justify="center">

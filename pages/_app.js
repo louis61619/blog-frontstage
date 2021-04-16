@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <UnStyled />
+      {/* <UnStyled /> */}
       <Provider store={store}>
         <Header />
         <Auth pageProps={pageProps}>

@@ -35,6 +35,10 @@ export const ListWrapper = styled.div`
       .introduce {
         color: rgba(117, 117, 117, 1);
         font-weight: 400;
+
+        @media (max-width: 576px) {
+          font-size: 1rem;
+        }
       }
     }
     .item-bottom {
