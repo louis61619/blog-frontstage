@@ -56,7 +56,7 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     height: 100%;
 
-    & > ul {
+    & > div {
       width: 100%;
     }
   }

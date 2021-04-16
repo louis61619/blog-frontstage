@@ -54,8 +54,8 @@ export default memo(function Header(props) {
         borderBottom: "none",
       }}
     >
-      <Menu.Item key="/search/title" icon={<SearchOutlined />}>
-        <Link href="/search">
+      <Menu.Item key="/search" icon={<SearchOutlined />}>
+        <Link href="/search/title">
           <a>
             <span className="menu-text">搜索</span>
           </a>
@@ -101,7 +101,9 @@ export default memo(function Header(props) {
           </div>
         </Col>
         <Col xs={4} sm={3} md={13} lg={10} xl={6} className="right-tools">
-          {menu}
+          <div>
+            {menu}
+          </div>
         </Col>
         {/* <Col xs={2} sm={1} md={0} lg={0} xl={0}>
           <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>

@@ -17,11 +17,6 @@ module.exports = withBundleAnalyzer(withPWA({
         destination: '/home',
         permanent: true,
       },
-      {
-        source: '/search',
-        destination: '/search/title',
-        permanent: true,
-      },
     ]
   },
   images: {
