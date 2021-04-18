@@ -25,7 +25,7 @@ const options = {
       // console.log("singinuser:", user);
       const { name, email, image } = user;
       if (!email) return false
-      const token = jwt.sign(user, process.env.AUTH_TOKEN, {
+      const token = jwt.sign(user, process.env.NEXTAUTH_TOKEN, {
         expiresIn: 60,
       })
       const result = await login(name, email, image, token);
