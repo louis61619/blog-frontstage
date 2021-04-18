@@ -31,6 +31,8 @@ export const SearchWrapper = styled.div`
 
   .comm-left {
     .comm-menu {
+      max-width: 680px;
+      margin-bottom: 25px;
       @media (max-width: 767px) {
         padding: 0 1rem;
       }

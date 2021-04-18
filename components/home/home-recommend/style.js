@@ -105,6 +105,9 @@ export const HomeRecommendWrapper = styled.div`
 
       & > * {
         margin-bottom: 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-right: 10px;
       }
 
       .introduce {

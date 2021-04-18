@@ -16,8 +16,9 @@ export const ListWrapper = styled.div`
 
   .list-item {
     max-width: 680px;
-    margin-bottom: 50px;
-    border-bottom: 1px solid #cbcbcb;
+    /* margin-bottom: 10px; */
+    padding: 20px 0 25px 0;
+    border-bottom: 1px solid rgba(0,0,0,.0785);
     .item-top {
       & > * {
         margin-bottom: 15px;
@@ -27,6 +28,8 @@ export const ListWrapper = styled.div`
         border-left: 4px solid rgb(156, 203, 250);
         padding-left: 1rem;
         font-weight: 700;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         @media (max-width: 576px) {
           font-size: 1.4rem;

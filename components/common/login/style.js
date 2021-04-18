@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const LoginWrapper = styled.div`
+  position: relative;
+  height: 100%;
   .title {
     height: 100px;
     display: flex;
@@ -14,7 +16,7 @@ export const LoginWrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 10px 0 50px 0;
+    padding: 10px 0 50px 0;
 
     &>div {
       display: flex;
@@ -30,6 +32,15 @@ export const LoginWrapper = styled.div`
     }
     .anticon {
       font-size: 1.2rem;
+    }
+  }
+  .privacy {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    span {
+      color: rgba(117,117,117,1);
     }
   }
 `

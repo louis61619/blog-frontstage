@@ -25,6 +25,11 @@ const Home = memo((props) => {
       </Head>
       <HomeRecommend list={recommendList} />
       <Row className="comm-main" type="flex" justify="center">
+        <Col xs={23} sm={23} md={0} lg={0} xl={0}>
+          <Author />
+        </Col>
+      </Row>
+      <Row className="comm-main" type="flex" justify="center">
         <Col className="comm-left" xs={23} sm={23} md={15} lg={16} xl={12}>
           <Scroll list={list} setList={setList} changeFun={getArticleList}>
             <List list={list} />

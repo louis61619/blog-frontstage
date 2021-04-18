@@ -1,6 +1,7 @@
 import React, { memo, forwardRef, useImperativeHandle, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { Modal, Button } from "antd";
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
@@ -56,6 +57,13 @@ export default memo(
                 </Button>
               </div>
             ))}
+          </div>
+          <div className="privacy" onClick={e => setIsModalVisible(false)}>
+            <Link href="/privacy">
+              <a>
+                <span>隱私權</span>
+              </a>
+            </Link>
           </div>
         </LoginWrapper>
       </Modal>

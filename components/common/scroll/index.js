@@ -1,4 +1,4 @@
-import React, { memo, useState, useReducer, useEffect, forwardRef, useImperativeHandle } from "react";
+import React, { memo, useState, useReducer, useEffect, forwardRef, useCallback, useImperativeHandle } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 
 import { Spin } from 'antd';
@@ -14,7 +14,8 @@ import { useCheckLogin } from "~/utils/custom-hook";
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 export default memo(forwardRef(function Scroll({ children, list, setList, changeFun, checkLogin }, ref) {
-  const [firstLoad, setFirstLoad] = useState(false)
+  // const [firstLoad, setFirstLoad] = useState(false)
+  const [firstLogin, setFirstLogin] = useState(false)
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
@@ -25,44 +26,48 @@ export default memo(forwardRef(function Scroll({ children, list, setList, change
 
   useImperativeHandle(ref, () => ({
     reset: () => {
+      // console.log('重置')
+      setPage(0)
+      setList([])
+      setFirstLogin(true)
       setLoading(true)
       setHasMore(true)
-      setList([])
-      setPage(0)
-      setFirstLoad(true)
     } 
   }))
 
   useEffect(() => {
-    // 初次加載鑑定權限
+    // 初次加載鑑定權限 如果未傳入checkLogin就直接繼續 有的話則要等待isLogin為true
     if(!checkLogin) {
-      return setFirstLoad(true)
+      return setFirstLogin(true)
     }
-    isLogin && setFirstLoad(true)
+    isLogin && setFirstLogin(true)
   }, [isLogin])
 
+
   const handleInfiniteOnLoad = async () => {
+    // if(!changeFun) return
     setLoading(false)
-    
-    setTimeout(() => {
-      changeFun(page * 1, 1).then(res => {
-        if(res.data.length === 0) {
-          setHasMore(false)
-        }
-        setList && setList([...list, ...res.data])
-        setPage(page + 1)
-        setLoading(true)
-      })
-    }, 300)
+    // setTimeout(() => {
+    changeFun && changeFun(page * 1, 1).then(res => {
+      if(res.data.length === 0) {
+        setHasMore(false)
+      }
+      setList && setList([...list, ...res.data])
+      setPage(page + 1)
+      setLoading(true)
+    })
+    // }, 300)
   };
+
+  // if(!changeFun) return null
 
   return (
     <ScrollWrapper>
       <InfiniteScroll
         pageStart={0}
-        // initialLoad={false}
+        initialLoad={true}
         loadMore={handleInfiniteOnLoad}
-        hasMore={ firstLoad && loading && hasMore }
+        hasMore={ firstLogin && loading && hasMore }
         // useWindow={false}
         // loader={<LoaderWrapper key={0} className="loader"><Spin indicator={antIcon} /></LoaderWrapper>}
       >
