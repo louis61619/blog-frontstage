@@ -24,10 +24,12 @@ const options = {
     async signIn(user, account, profile) {
       // console.log("singinuser:", user);
       const { name, email, image } = user;
-      const token = jwt.sign(user, "123456", {
+      if (!email) return false
+      const token = jwt.sign(user, process.env.AUTH_TOKEN, {
         expiresIn: 60,
       })
       const result = await login(name, email, image, token);
+      if (result.data === 'is not login') return false
       user.id = result.id
       user.accessToken = result.token
       return true;
@@ -53,7 +55,7 @@ const options = {
       const userInfo = await getUserInfo(id, accessToken)
       userInfo.accessToken = accessToken
       session.user = userInfo
-      console.log(userInfo)
+      // console.log(userInfo)
       return session;
     },
   },
