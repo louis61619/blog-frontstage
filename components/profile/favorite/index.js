@@ -34,7 +34,6 @@ export default memo(function Favorite(props) {
   // }, [userInfo]);
 
   const cancelFavorite = (id) => {
-    console.log("刪除" + id);
     dispatch(cancelFavoriteAction(id, true));
   };
 

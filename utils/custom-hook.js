@@ -55,18 +55,23 @@ export const useFavoriteList = (id) => {
   const isFavoriteRef = useRef(isFavorite)
 
   useEffect(() => {
-    console.log(id)
     const favoriteList = userInfo.favorite ? userInfo.favorite : []
     const value = favoriteList.indexOf(id) !== -1
     setIsFavorite(value)
     isFavoriteRef.current = value
   }, [userInfo, id])
 
+  // useEffect(() => {
+  //   debouncedSave && debouncedSave.cancel()
+  // }, [id])
+
   const dispatch = useDispatch()
 
   const debouncedSave = useRef(debounce((nextValue, id) => {
+    // console.log(id)
     // 判斷值有沒有被改變
     if(isFavoriteRef.current === nextValue) return
+    
     // 如果被改變有兩種情況
     // 1.加入
     if(nextValue === true) {
@@ -78,7 +83,7 @@ export const useFavoriteList = (id) => {
     
     isFavoriteRef.current = nextValue
 
-  }, 1000))
+  }, 300))
 		.current;
 
   const clickFavorite = useCallback(async (preValue) => {
