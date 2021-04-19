@@ -49,6 +49,8 @@ export const FavoriteWrapper = styled.div`
 
       .title {
         margin-bottom: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .introduce {

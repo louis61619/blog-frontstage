@@ -19,12 +19,6 @@ export default memo(function ArticleLabel(props) {
   })
 
   useEffect(() => {
-    if(router.isReady) {
-      console.log(query)
-    }
-  }, [query])
-
-  useEffect(() => {
     setList(minuslist)
   }, [])
 

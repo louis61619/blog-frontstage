@@ -1,7 +1,10 @@
 import React, { memo, forwardRef, useImperativeHandle, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
+import { changeLoginModelStatus } from '~/store/user/actionCreators'
 
 import { Modal, Button } from "antd";
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
@@ -11,25 +14,35 @@ export default memo(
   forwardRef(function Login(props, ref) {
     const router = useRouter()
     const { providers } = props;
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    // const [isModalVisible, setIsModalVisible] = useState(false);
     // const [ session, loading ] = useSession()
+    const {
+      loginModelStatus: isModalVisible
+    } = useSelector((state) => ({
+      loginModelStatus: state.getIn(['user', 'loginModelStatus'])
+    }), shallowEqual)
+
+    const dispatch = useDispatch()
 
     useImperativeHandle(ref, () => ({
       showModal: (value) => {
-        setIsModalVisible(value);
+        dispatch(changeLoginModelStatus(value));
       },
     }));
 
-    const showModal = () => {
-      setIsModalVisible(true);
-    };
+    // const showModal = () => {
+    //   // setIsModalVisible(true);
+    //   dispatch(changeLoginModelStatus(true))
+    // };
 
     const handleOk = () => {
-      setIsModalVisible(false);
+      // setIsModalVisible(false);
+      dispatch(changeLoginModelStatus(false))
     };
 
     const handleCancel = () => {
-      setIsModalVisible(false);
+      // setIsModalVisible(false);
+      dispatch(changeLoginModelStatus(false))
     };
 
     return (

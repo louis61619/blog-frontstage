@@ -17,7 +17,7 @@ export default memo(function DetailLabels(props) {
   const { id: articleId } = router?.query
 
   const [isLogin, userInfo] = useCheckLogin()
-  const [ isFavorite, clickFavorite ] = useFavoriteList(userInfo, { id: Number(articleId) })
+  const [ isFavorite, clickFavorite ] = useFavoriteList(Number(articleId))
 
   return (
     <DetailLabelsWrapper>

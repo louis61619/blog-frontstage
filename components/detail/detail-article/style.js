@@ -8,6 +8,8 @@ export const DetailArticleWrapper = styled.div`
     font-size: 2.25rem;
     text-align: center;
     font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
     @media (max-width: 576px) {
       font-size: 1.7rem;
       text-align: start;

@@ -43,30 +43,37 @@ export const useCheckLogin = () => {
 };
 
 
-export const useFavoriteList = (userInfo, item) => {
+export const useFavoriteList = (id) => {
+
+  const {
+    userInfo,
+  } = useSelector(state => ({
+    userInfo: state.getIn(["user", "userInfo"])
+  }), shallowEqual)
+
   const [ isFavorite, setIsFavorite ] = useState(false)
+  const isFavoriteRef = useRef(isFavorite)
 
   useEffect(() => {
-    const favoriteList = userInfo?.favorite ? userInfo.favorite : []
-    const value = favoriteList.indexOf(item.id) !== -1
+    console.log(id)
+    const favoriteList = userInfo.favorite ? userInfo.favorite : []
+    const value = favoriteList.indexOf(id) !== -1
     setIsFavorite(value)
     isFavoriteRef.current = value
-  }, [userInfo])
+  }, [userInfo, id])
 
   const dispatch = useDispatch()
 
-  const isFavoriteRef = useRef(isFavorite)
-
-  const debouncedSave = useRef(debounce((nextValue) => {
+  const debouncedSave = useRef(debounce((nextValue, id) => {
     // 判斷值有沒有被改變
     if(isFavoriteRef.current === nextValue) return
     // 如果被改變有兩種情況
     // 1.加入
     if(nextValue === true) {
-      dispatch(addFavoriteAction(item.id))
+      dispatch(addFavoriteAction(id))
     } else {
       // 2.取消
-      dispatch(cancelFavoriteAction(item.id))
+      dispatch(cancelFavoriteAction(id))
     }
     
     isFavoriteRef.current = nextValue
@@ -77,8 +84,8 @@ export const useFavoriteList = (userInfo, item) => {
   const clickFavorite = useCallback(async (preValue) => {
     if(Object.keys(userInfo).length === 0 ) return message.warning('請先登錄')
     setIsFavorite(!isFavorite)
-		debouncedSave(!isFavorite);
-  }, [userInfo, isFavorite])
+		debouncedSave(!isFavorite, id);
+  }, [userInfo, isFavorite, id])
 
   return [isFavorite, clickFavorite]
 }

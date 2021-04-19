@@ -31,7 +31,7 @@ import { ListWrapper } from "./style";
 
 const ListItem = (props) => {
   const { item, userInfo } = props
-  const [ isFavorite, clickFavorite ] = useFavoriteList(userInfo, item)
+  const [ isFavorite, clickFavorite ] = useFavoriteList(item.id)
   const router = useRouter()
 
   return (

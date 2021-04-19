@@ -12,6 +12,11 @@ import {
 } from '~/services/user'
 import { formatJsonStr } from '~/utils/formate-utils'
 
+export const changeLoginModelStatus = status => ({
+  type: actionTypes.CHANGE_LOGIN_MODEL_STATUS,
+  status
+})
+
 const changeUserSession = userSession => ({
   type: actionTypes.CHANGE_USER_SESSION,
   userSession
@@ -45,6 +50,10 @@ const changeUserName = name => ({
   name
 })
 
+const changeIsLoaging = () => ({
+  type: actionTypes.CHANGE_IS_LOADING,
+})
+
 // export const getUserSessinAction = () => {
 //   return async dispatch => {
 //     // 獲取認證
@@ -67,15 +76,9 @@ export const getUserInfoAction = () => {
   return async dispatch => {
     const res = await getSession()
     if(res === null) {
-      return dispatch(changeUserSession({}))
+      dispatch(changeUserSession({}))
+      return dispatch(changeIsLoaging())
     }
-    // dispatch(changeUserSession(res?.user))
-    // // 獲取資料
-    // const userInfo = await getUserInfo(res?.user.id)
-    // // userInfo.favorite = JSON.parse(userInfo?.favorite)
-    // if(userInfo?.favorite) {
-    //   userInfo.favorite = JSON.parse(userInfo.favorite)
-    // }
     dispatch(changeUserSession(res?.user))
     const userInfo = {...res.user}
     // userInfo.favorite = JSON.parse(userInfo?.favorite)
@@ -83,6 +86,7 @@ export const getUserInfoAction = () => {
       userInfo.favorite = JSON.parse(userInfo.favorite)
     }
     dispatch(changeUserInfo(userInfo))
+    dispatch(changeIsLoaging())
   }
 }
 
