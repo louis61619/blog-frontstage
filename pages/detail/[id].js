@@ -89,7 +89,7 @@ const Detail = memo((props) => {
   useEffect(async () => {
     const res = await getDetailRecommend()
     setRecommend(res.data)
-  }, [])
+  }, [article.id])
 
   return (
     <DetailWrapper>
