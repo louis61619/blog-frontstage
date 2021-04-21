@@ -25,7 +25,7 @@ export const HeaderWrapper = styled.div`
     width: 180px;
 
     @media (max-width: 767px) {
-      margin-left: 1rem;
+      margin-left: .5rem;
     }
 
     @media (max-width: 512px) {
@@ -98,8 +98,4 @@ export const MenuWrapper = styled(Menu)`
   .anticon {
     font-size: 1.1rem;
   }
-  /* @media (max-width: 767px) {
-    flex-direction: column;
-    font-size: 1rem;
-  } */
 `;

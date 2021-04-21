@@ -11,6 +11,10 @@ export const DetailWrapper = styled.div`
     margin-bottom: 10px;
     min-height: 150px;
 
+    .ant-list-item-main {
+      width: 90px;
+    }
+
     .img-center {
       width: 270px;
       object-fit: cover;
@@ -24,7 +28,15 @@ export const DetailWrapper = styled.div`
 
     .left-item {
       position: relative;
-      height: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      h2 {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
 
       @media (max-width: 767px) {
         h4 {
