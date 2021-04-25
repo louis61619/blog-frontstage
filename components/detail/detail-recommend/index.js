@@ -59,7 +59,7 @@ export default memo(function DetailRecommend(props) {
       <List
         grid={{ gutter: 16, column: 3 }}
         dataSource={recommend || []}
-        loading={recommend && false}
+        loading={!recommend && true}
         renderItem={(item) => (
           <Link href={`/detail/${item.id}`}>
             <a>

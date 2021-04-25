@@ -27,7 +27,7 @@ import { changeCheckDetail } from "~/store/detail/actionCreaters";
 const recommendList = (list) => {
   return (
     <List
-      loading={list && false}
+      loading={!list && true}
       itemLayout="vertical"
       dataSource={list || []}
       renderItem={(item) => (
