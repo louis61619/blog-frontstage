@@ -20,12 +20,12 @@ const DetailArticle = (props) => {
       <h2 className="detail-introduce">
         { article.introduce }
       </h2>
-      <div className="list-icon center">
+      {/* <div className="list-icon center">
         <span>
           <CalendarOutlined />
           2019-06-28
         </span>
-      </div>
+      </div> */}
 
       {props.children}
     </DetailArticleWrapper>
