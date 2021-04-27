@@ -8,6 +8,10 @@ export const DetailMarkdownWrapper = styled.div`
     font-size: .9rem;
   } 
 
+  table { border-collapse: collapse; }
+  tr { border-bottom: solid 1px black; }
+  tr:nth-child(even) {background-color: #f2f2f2;}
+
   h1,
   h2,
   h3,
@@ -23,6 +27,17 @@ export const DetailMarkdownWrapper = styled.div`
 
   ul {
     margin-bottom: 16px;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+
+    & > li {
+      list-style-type: disc;
+    }
   }
 
   h1 {
@@ -59,7 +74,10 @@ export const DetailMarkdownWrapper = styled.div`
 
   p {
     margin-bottom: 16px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    @media (max-width: 576px) {
+      font-size: 1rem;
+    } 
     @media (max-width: 376px) {
       font-size: .9rem;
     } 
