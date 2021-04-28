@@ -22,6 +22,7 @@ export const DetailArticleWrapper = styled.div`
     text-align: center;
     font-weight: 400;
     color: rgba(117, 117, 117, 1);
+    margin-bottom: 20px;
 
     @media (max-width: 576px) {
       font-size: 1.2rem;
