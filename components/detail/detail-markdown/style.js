@@ -78,9 +78,9 @@ export const DetailMarkdownWrapper = styled.div`
     @media (max-width: 576px) {
       font-size: 1rem;
     } 
-    @media (max-width: 376px) {
+    /* @media (max-width: 376px) {
       font-size: .9rem;
-    } 
+    }  */
   }
 
   pre {
