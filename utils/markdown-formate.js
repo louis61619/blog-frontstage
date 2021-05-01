@@ -40,6 +40,8 @@ renderer.heading = function (text, level, raw) {
 
 store.dispatch(changeMarkNav(toc))
 
+renderer.link = ( href, title, text ) => `<a target="_blank" href="${ href }" title="${ title }">${ text }</a>`
+
 // 置入設定
 
 marked.setOptions({
