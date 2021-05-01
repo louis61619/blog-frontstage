@@ -1,6 +1,10 @@
 import marked from "marked";
 import hljs from "highlight.js";
-import 'highlight.js/styles/monokai-sublime.css';
+import "highlight.js/styles/stackoverflow-dark.css";
+import { initializeStore } from '~/store'
+import { changeMarkNav } from '~/store/detail/actionCreaters'
+
+const store = initializeStore()
 
 function checkURL(URL) {
   var str = URL;
@@ -16,10 +20,27 @@ function checkURL(URL) {
 const renderer = new marked.Renderer();
 
 renderer.image = function (src, title, alt) {
-  const newSrc = checkURL(src)? src : process.env.NEXT_PUBLIC_STATIC + src;
+  const newSrc = checkURL(src) ? src : process.env.NEXT_PUBLIC_STATIC + src;
   // console.log(newSrc)
   return `<img src="${newSrc}">`;
 };
+
+var toc = [];
+
+renderer.heading = function (text, level, raw) {
+  var anchor =
+    this.options.headerPrefix + raw.toLowerCase().replace(/[^\w]+/g, "-");
+  toc.push({
+    anchor: anchor,
+    level: level,
+    text: text,
+  });
+  return "<h" + level + ' id="' + anchor + '">' + text + "</h" + level + ">\n";
+};
+
+store.dispatch(changeMarkNav(toc))
+
+// 置入設定
 
 marked.setOptions({
   renderer: renderer,
@@ -34,9 +55,9 @@ marked.setOptions({
   smartLists: true,
   smartypants: false,
   langPrefix: "hljs language-",
-  highlight: function(code) {
+  highlight: function (code) {
     return hljs.highlightAuto(code, ["html", "javascript"]).value;
-  }
+  },
 });
 
-export default marked
+export default marked;

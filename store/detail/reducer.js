@@ -4,7 +4,8 @@ import * as actionTypes from './constants'
 
 const defaultState = Map({
   recommendScrollTop: 0,
-  checkDetail: {}
+  checkDetail: {},
+  marknav: []
 })
 
 function reducer(state = defaultState, action) {
@@ -13,6 +14,8 @@ function reducer(state = defaultState, action) {
       return state.set("recommendScrollTop", action.recommendScrollTop)
     case actionTypes.CHANGE_CHECK_DETAIL:
       return state.set("checkDetail", action.item)
+    case actionTypes.CHANGE_MARK_NAV:
+      return state.set("marknav", action.list)
     default:
       return state;
   }

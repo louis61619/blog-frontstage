@@ -6,7 +6,6 @@ import Router from "next/router";
 import NProgress from "nprogress";
 
 import { useStore } from "~/store";
-import { useLoadingSkeleton } from "~/utils/custom-hook";
 
 import "antd/dist/antd.css";
 import "../styles/globals.css";

@@ -9,3 +9,8 @@ export const changeCheckDetail = item => ({
   type: actionTypes.CHANGE_CHECK_DETAIL,
   item
 })
+
+export const changeMarkNav = list => ({
+  type: actionTypes.CHANGE_MARK_NAV,
+  list
+})
