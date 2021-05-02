@@ -18,10 +18,10 @@ export const MarkdownNavWrapper = styled.div`
   }
 
   .article-menu{
-    font-size:16px;
+    font-size:14px;
 
     .title-anchor {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
