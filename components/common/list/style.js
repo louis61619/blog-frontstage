@@ -15,7 +15,7 @@ export const ListWrapper = styled.div`
   }
 
   .list-item {
-    max-width: 680px;
+    /* max-width: 720px; */
     /* margin-bottom: 10px; */
     padding: 20px 0 25px 0;
     border-bottom: 1px solid rgba(0,0,0,.0785);
