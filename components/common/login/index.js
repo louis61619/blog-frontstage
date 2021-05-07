@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import NProgress from "nprogress";
 
 import { changeLoginModelStatus } from '~/store/user/actionCreators'
 
@@ -14,8 +15,6 @@ export default memo(
   forwardRef(function Login(props, ref) {
     const router = useRouter()
     const { providers } = props;
-    // const [isModalVisible, setIsModalVisible] = useState(false);
-    // const [ session, loading ] = useSession()
     const {
       loginModelStatus: isModalVisible
     } = useSelector((state) => ({
@@ -30,20 +29,18 @@ export default memo(
       },
     }));
 
-    // const showModal = () => {
-    //   // setIsModalVisible(true);
-    //   dispatch(changeLoginModelStatus(true))
-    // };
-
     const handleOk = () => {
-      // setIsModalVisible(false);
       dispatch(changeLoginModelStatus(false))
     };
 
     const handleCancel = () => {
-      // setIsModalVisible(false);
       dispatch(changeLoginModelStatus(false))
     };
+
+    const clickSignIn = (id) => {
+      NProgress.start();
+      signIn(id)
+    }
 
     return (
       <Modal
@@ -59,7 +56,7 @@ export default memo(
           <div className="login-area">
             {providers && Object.values(providers).map((provider) => (
               <div key={provider.name}>
-                <Button onClick={() => signIn(provider.id)}>
+                <Button onClick={() => clickSignIn(provider.id)}>
                   {
                     {
                       Facebook: <FacebookOutlined />,

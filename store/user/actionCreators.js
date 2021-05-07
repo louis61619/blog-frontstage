@@ -54,14 +54,6 @@ const changeIsLoaging = () => ({
   type: actionTypes.CHANGE_IS_LOADING,
 })
 
-// export const getUserSessinAction = () => {
-//   return async dispatch => {
-//     // 獲取認證
-//     const res = await getSession()
-//     dispatch(changeUserSession(res?.user))
-//   }
-// }
-
 export const changeVisitsCheckedAction = () => {
   return async (dispatch, getState) => {
     const visitsChecked = getState().getIn(["user", "visitsChecked"])

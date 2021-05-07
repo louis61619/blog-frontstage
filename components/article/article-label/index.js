@@ -10,23 +10,25 @@ export default memo(function ArticleLabel(props) {
 
   const [list, setList] = useState([])
   const [isUnfold, setIsUnfold] = useState(false)
+  const [minuslist, setMinusList] = useState([])
 
   const router = useRouter()
   const { query } = router
-
-  const minuslist = props.labels.filter((item, index) => {
-    return index < 5
-  })
+  const { labels } = props
 
   useEffect(() => {
+    const minuslist = labels.filter((item, index) => {
+      return index < 5
+    })
+    setMinusList(minuslist)
     setList(minuslist)
-  }, [])
+  }, [labels])
 
   const clickItem = () => {
     if(isUnfold) {
       setList(minuslist)
     } else {
-      setList(props.labels)
+      setList(labels)
     }
     setIsUnfold(!isUnfold)
   }

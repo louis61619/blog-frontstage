@@ -16,6 +16,7 @@ import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 import ImgCrop from "antd-img-crop";
+import NProgress from "nprogress";
 import {
   getFavoriteListAction,
   resetUser,
@@ -118,6 +119,7 @@ export default memo(function Profile(props) {
   };
 
   const clickSignOut = () => {
+    NProgress.start()
     signOut({ callbackUrl: "/" });
   };
 

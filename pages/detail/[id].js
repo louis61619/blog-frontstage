@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { getArticleById, getStaticList } from "~/services/home";
 import { getDetailRecommend } from '~/services/article'
 import marked from "~/utils/markdown-formate";
-import moment from 'moment'
+
 
 import { Row, Col, Affix, Card, List, Drawer } from "antd";
 
@@ -24,41 +24,7 @@ import DetailRecommend from '~/components/detail/detail-recommend'
 import { DetailWrapper } from '~/components/detail/style'
 import { changeCheckDetail } from "~/store/detail/actionCreaters";
 
-const recommendList = (list) => {
-  return (
-    <List
-      loading={!list && true}
-      itemLayout="vertical"
-      dataSource={list || []}
-      renderItem={(item) => (
-        <Link href={`/detail/${item.id}`}>
-          <a>
-            <List.Item
-              className="list-item"
-              extra={
-                <img
-                  className="img-center"
-                  alt="logo"
-                  src={
-                    item.images
-                      ? JSON.parse(item.images)[0]
-                      : "/coding.jpeg"
-                  }
-                />
-              }
-            >
-              <div className="left-item">
-                <p>{moment(item.releaseTime).format("YYYY-MM-DD")}</p>
-                <h2>{item.title}</h2>
-                <h4>{item.introduce}</h4>
-              </div>
-            </List.Item>
-          </a>
-        </Link>
-      )}
-    />
-  );
-};
+
 
 
 const Detail = memo((props) => {
@@ -66,6 +32,7 @@ const Detail = memo((props) => {
   const commentRef = useRef()
   const [container, setContainer] = useState(null);
   const [recommend, setRecommend] = useState(null)
+  const [comments, setComments] = useState(null)
   const router = useRouter()
 
   if (router.isFallback) {
@@ -87,9 +54,16 @@ const Detail = memo((props) => {
     }
   }, [checkDetail])
 
-  useEffect(async () => {
-    const res = await getDetailRecommend()
-    setRecommend(res.data)
+  useEffect(() => {
+    setRecommend(null)
+    setComments(null)
+    getDetailRecommend().then(res => {
+      setRecommend(res.data)
+    })
+    getArticleById(article.id).then(res => {
+      console.log(res.data)
+      setComments(JSON.parse(res.data.comments))
+    })
   }, [article.id])
 
   return (
@@ -113,16 +87,9 @@ const Detail = memo((props) => {
         </Col>
       </Row>
 
-      <Row className="comm-main recommend" type="flex" justify="center">
-        <Col xs={0} sm={0} md={23} lg={23} xl={18}>
-          <DetailRecommend recommend={recommend} />
-        </Col>
-        <Col xs={23} sm={23} md={0} lg={0} xl={0}>
-          {recommendList(recommend)}
-        </Col>
-      </Row>
+      <DetailRecommend recommend={recommend} />
 
-      <Comment ref={commentRef} comments={JSON.parse(article.comments)} articleId={article.id} />
+      <Comment ref={commentRef} comments={comments} articleId={article.id} />
       
 
     </DetailWrapper>

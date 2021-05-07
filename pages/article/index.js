@@ -13,21 +13,21 @@ import ArticleLabel from "~/components/article/article-label";
 import Scroll from "~/components/common/scroll";
 
 import { ArticleWrapper } from "../../components/article/style";
+import { use } from "marked";
 
-const Home = memo((props) => {
-  const { labels } = props;
+const Article = memo((props) => {
+
   const router = useRouter();
   const scrollRef = useRef();
   const { id } = router.query;
 
   const [list, setList] = useState([]);
   const [changeFun, setChangeFun] = useState(null);
-
+  const [labels, setLabels] = useState([])
   const [currentValue, setCurrentValue] = useState(null);
 
   useEffect(() => {
     if(router.isReady) {
-      // console.log(id)
       scrollRef.current.reset()
       if (id) {
         setChangeFun(() => {
@@ -41,6 +41,12 @@ const Home = memo((props) => {
       }
     }
   }, [router])
+
+  useEffect(() => {
+    getLabels().then(res => {
+      setLabels(res.data)
+    })
+  }, [])
 
   return (
     <ArticleWrapper>
@@ -70,14 +76,5 @@ const Home = memo((props) => {
   );
 });
 
-export const getStaticProps = async (context) => {
-  // console.log(context);
-  const labels = await getLabels();
-  return {
-    props: {
-      labels: labels.data,
-    },
-  };
-};
 
-export default Home;
+export default Article;

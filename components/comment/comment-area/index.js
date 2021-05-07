@@ -2,6 +2,9 @@ import React, { memo, Fragment, useState, useContext, useEffect } from "react";
 import {
   writeComment
 } from '~/services/comment'
+import { changeLoginModelStatus } from '~/store/user/actionCreators'
+import { useDispatch } from 'react-redux'
+
 import { Button, Input, Avatar, message } from "antd";
 import { CommentAreaWrapper } from "./style";
 import { CommentContext } from "..";
@@ -20,8 +23,11 @@ export default memo(function CommentArea(props) {
   const [isFocus, setIsFocus] = useState(false);
   const [value, setValue] = useState(null)
 
-  const focusArea = () => {
-    Object.keys(userInfo).length ? setIsFocus(true) : message.warn("請先登錄")
+  const dispatch = useDispatch()
+
+  const focusArea = (e) => {
+    e.preventDefault();
+    Object.keys(userInfo).length ? setIsFocus(true) : dispatch(changeLoginModelStatus(true))
   };
 
   const leaveMessage = async () => {
@@ -60,6 +66,8 @@ export default memo(function CommentArea(props) {
           <TextArea
             value={value}
             onChange={e => setValue(e.target.value)}
+            onPressEnter={leaveMessage}
+            spellcheck="false"
             placeholder="你想要說什麼？"
             className="reply-text"
             autoSize={{ minRows: 3, maxRows: 5 }}
@@ -75,7 +83,8 @@ export default memo(function CommentArea(props) {
         <TextArea
           className="text-area"
           placeholder="你想要說什麼？"
-          onFocus={focusArea}
+          onMouseDown={e => focusArea(e)}
+          value={null}
           autoSize
         />
       )}

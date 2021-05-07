@@ -20,6 +20,7 @@ export default memo(function Search(props) {
   const [current, setCurrent] = useState('title')
   const [isFocus, setIsFocus] = useState(false)
   const [value, setValue] = useState('')
+  const [labels, setLabels] = useState([])
 
   const [list, setList] = useState([])
   const [changeFun, setChangeFun] = useState()
@@ -28,6 +29,12 @@ export default memo(function Search(props) {
 
   const router = useRouter()
   const { query } = router
+
+  useEffect(() => {
+    getLabels().then(res => {
+      setLabels(res.data)
+    })
+  }, [])
   
   useEffect(() => {
     const { type, s } = query
@@ -88,7 +95,8 @@ export default memo(function Search(props) {
       <Row className="comm-main" type="flex" justify="center">
         <Col xs={23} sm={23} md={23} lg={23} xl={18}>
           <div className="search-form" onFocus={e => setIsFocus(true)} onBlur={e => setIsFocus(false)}>
-            <input type="search" 
+            <input type="search"
+                   spellcheck="false"
                    placeholder="Search Blog" 
                    value={value} 
                    onInput={e => setValue(e.target.value)}
@@ -112,7 +120,7 @@ export default memo(function Search(props) {
 
         <Col className="comm-right" xs={0} sm={0} md={8} lg={7} xl={6}>
           <Affix offsetTop={5}>
-            <Labels labels={props.labels} />
+            <Labels labels={labels} />
           </Affix>
         </Col>
       </Row>
@@ -121,28 +129,15 @@ export default memo(function Search(props) {
 });
 
 export const getStaticPaths = () => {
-  
   return {
     paths: [{ params: { type: 'title' } }, { params: { type: 'tags' } }],
     fallback: false,
   }
 }
 
-// export const getStaticProps = async ({params}) => {
-//   const { type } = params
-
-//   return {
-//     props: {
-//       type,
-//     },
-//   };
-// };
-
 export const getStaticProps = async () => {
-  const labels = await getLabels()
   return {
     props: {
-      labels: labels.data,
     },
   };
 };
