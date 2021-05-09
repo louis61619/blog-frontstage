@@ -1,34 +1,125 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# 部落格前台
 
-```bash
-npm run dev
-# or
+這是一個力求簡潔美感的部落格，使用Nextjs搭建
+
+部落格地址：https://mycoderland.tw
+
+前台源碼：https://github.com/louis61619/blog-frontstage.git
+
+後台源碼：https://github.com/louis61619/blog-backstage.git
+
+服務端源碼：https://github.com/louis61619/blog-server.git
+
+
+
+## 技術棧
+
+- Next.js
+- Next-auth
+- React-redux
+- Immutable
+- Ant-design
+- Styled-components
+- marked
+- Highlight.js
+
+[查看Next.js使用插件的採坑](https://www.mycoderland.tw/detail/16)
+
+
+
+## 安裝運行
+
+```
+yarn install
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 環境變量
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+位於根目錄 .env
 
-## Learn More
+| Keys                   | Introduction          |
+| ---------------------- | --------------------- |
+| NEXT_PUBLIC_URL        | 後端host              |
+| NEXT_PUBLIC_STATIC     | 圖片地址前綴          |
+| NEXTAUTH_URL           | 頁面開啟URL           |
+| NEXTAUTH_TOKEN         | 權限驗證的加密字串    |
+| FACEBOOK_CLIENT_ID     | Facebook 登錄API ID   |
+| FACEBOOK_CLIENT_SECRET | Facebook 登錄API 密鑰 |
+| GOOGLE_CLIENT_ID       | Google 登錄API ID     |
+| GOOGLE_CLIENT_SECRET   | Google 登錄API 密鑰   |
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 功能
 
-## Deploy on Vercel
+> v1.0
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Progressive Web Apps](https://web.dev/progressive-web-apps/)
+- [Responsive Web Design](https://zh.wikipedia.org/zh-tw/响应式网页设计)
+- 第三方登錄
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+主要頁面包含: 首頁、搜索、文章、詳情、用戶
+
+### 首頁: 
+
+- 頂部推薦 (透過點擊數量判斷)
+- 文章列表
+- 博主訊息
+
+![image-20210507143733915](./images/image-20210507143733915.png)
+
+![image-20210507144535464](./images/image-20210507144535464.png)
+
+### 搜索頁功能:
+
+- 文章標題模糊查詢
+- 文章標籤模糊查詢
+- 標籤列表
+
+![image-20210507150318838](./images/image-20210507150318838.png)
+
+![image-20210507150337850](./images/image-20210507150337850.png)
+
+### 文章頁功能:
+
+- 文章列表
+- 標籤列表
+
+![image-20210507150501395](./images/image-20210507150501395.png)
+
+
+
+## 詳情頁功能:
+
+- 文章內容
+- 文章目錄
+- 底部推薦
+- 留言
+
+![image-20210507151022687](./images/image-20210507151022687.png)
+
+![image-20210507152111764](./images/image-20210507152111764.png)
+
+![image-20210507152022944](./images/image-20210507152022944.png)
+
+## 用戶頁功能:
+
+- 第三方登錄
+- 收藏
+- 通知
+
+![image-20210507152348258](./images/image-20210507152348258.png)
+
+![imges](./images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202021-05-07%20152603.png)
+
+![image-20210507152901186](./images/image-20210507152901186.png)
+
+![image-20210507153026704](./images/image-20210507153026704.png)
+
+![image-20210507154755047](./images/image-20210507154755047.png)
+
