@@ -59,13 +59,13 @@
   yarn install && yarn dev
   ```
 
-- 如果想要在開發環境中瀏覽部落格，請下載blog前台 https://github.com/louis61619/blog-frontstage.git，然後在根目錄下指令(默認啟用端口為3000)
+- 如果想要在開發環境中瀏覽部落格，請下載[blog前台]( https://github.com/louis61619/blog-frontstage.git)，然後在根目錄下指令(默認啟用端口為3000)
 
   ```
   yarn install && yarn start
   ```
 
-- 如果想要在開發環境中編輯部落格內容，請下載blog後台 https://github.com/louis61619/blog-backstage.git，然後在根目錄下指令(默認啟用端口為3001)
+- 如果想要在開發環境中編輯部落格內容，請下載[blog後台](https://github.com/louis61619/blog-backstage.git) ，然後在根目錄下指令(默認啟用端口為3001)
 
   ```
   yarn install && yarn dev
