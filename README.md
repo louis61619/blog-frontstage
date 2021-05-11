@@ -48,7 +48,7 @@
     - 創建資料庫並命名為react_blog
     - 設定mysql端口為3310
     - 匯入資料，該檔案位於/react-blog02.sql
-    - 如果要修改設定參數請參閱
+    - 如果要修改設定參數請參閱[服務端環境變數](https://github.com/louis61619/blog-server#%E7%92%B0%E5%A2%83%E8%AE%8A%E9%87%8F)
   - 如果不想使用本地mysql 可以使用docker，只要下指令**dokcer -d -p 3310:3306 louis61619/blog-data**即可運行該鏡像
     - 如果想要修改對外端口，可以直接修改 3310這個參數
     - 如果想要掛載volume，可以在指令中加入 -v <本地目錄>:/var/lib/mysql
