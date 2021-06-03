@@ -61,6 +61,9 @@ export const HeaderWrapper = styled.div`
 
       @media (max-width: 767px) {
         width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .ant-menu {
