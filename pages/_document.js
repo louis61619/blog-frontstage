@@ -1,8 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-const APP_NAME = 'CoderLand'
-const APP_DESCRIPTION = "this is a coder's blog"
+const APP_NAME = 'Coder Land'
+const APP_DESCRIPTION = "this is a blog name Coder Land"
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

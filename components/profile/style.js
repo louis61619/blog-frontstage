@@ -44,6 +44,9 @@ export const ProfileWrapper = styled.div`
             border-radius: 50%;
             overflow: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
 
             .image-upload {
@@ -79,9 +82,10 @@ export const ProfileWrapper = styled.div`
             }
 
             img {
-              width: 100%;
-              height: 100%;
+              width: 95%;
+              height: 95%;
               object-fit: cover;
+              border-radius: 50%;
             }
           }
         }
