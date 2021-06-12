@@ -1,5 +1,11 @@
 import request from './request'
 
+export function getSitemap() {
+  return request({
+    url: "/default/sitemap"
+  })
+}
+
 export function getTopRecommned() {
   return request({
     url: "/default/getTopRecommend",
