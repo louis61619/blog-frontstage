@@ -20,7 +20,7 @@ module.exports = withBundleAnalyzer(withPWA({
     ]
   },
   images: {
-    domains: ['coderland.ml', 'localhost'],
+    domains: [new URL(process.env.NEXT_PUBLIC_STATIC).host, 'localhost'],
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',
