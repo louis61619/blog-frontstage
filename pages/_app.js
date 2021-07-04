@@ -11,6 +11,7 @@ import "antd/dist/antd.css";
 import "../styles/globals.css";
 import "moment/locale/zh-tw";
 import "../styles/progress.css";
+import "normalize.css"
 
 import Header from "~/components/common/header";
 import Footer from "~/components/common/footer";
