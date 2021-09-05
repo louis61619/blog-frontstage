@@ -5,7 +5,6 @@ import React, {
   useState,
   Fragment,
   useRef,
-  useLayoutEffect,
 } from "react";
 import ReactDOM from "react-dom";
 

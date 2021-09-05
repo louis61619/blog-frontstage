@@ -9,8 +9,29 @@ export const DetailMarkdownWrapper = styled.div`
   } 
 
   table { border-collapse: collapse; }
-  tr { border-bottom: solid 1px black; }
   tr:nth-child(even) {background-color: #f2f2f2;}
+  table {
+    border-collapse: collapse;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    
+  }
+  thead {
+    /* border: solid 1px #d6d6d6; */
+    th {
+      padding: 6px 13px;
+      border: solid 1px #d6d6d6;
+    }
+  }
+  tbody {
+    /* border: solid 1px #d6d6d6; */
+    td {
+      padding: 6px 13px;
+      border: solid 1px #d6d6d6;
+    }
+  }
+  
 
   h1,
   h2,
