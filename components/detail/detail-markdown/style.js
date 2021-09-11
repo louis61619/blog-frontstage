@@ -5,17 +5,20 @@ export const DetailMarkdownWrapper = styled.div`
   margin-bottom: 45px;
 
   @media (max-width: 376px) {
-    font-size: .9rem;
-  } 
+    font-size: 0.9rem;
+  }
 
-  table { border-collapse: collapse; }
-  tr:nth-child(even) {background-color: #f2f2f2;}
+  table {
+    border-collapse: collapse;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
   table {
     border-collapse: collapse;
     width: max-content;
     max-width: 100%;
     overflow: auto;
-    
   }
   thead {
     /* border: solid 1px #d6d6d6; */
@@ -31,7 +34,6 @@ export const DetailMarkdownWrapper = styled.div`
       border: solid 1px #d6d6d6;
     }
   }
-  
 
   h1,
   h2,
@@ -78,7 +80,7 @@ export const DetailMarkdownWrapper = styled.div`
     border-bottom: 1px solid #cbcbcb;
     @media (max-width: 576px) {
       font-size: 1.5rem;
-    } 
+    }
   }
 
   h3 {
@@ -86,7 +88,7 @@ export const DetailMarkdownWrapper = styled.div`
     line-height: 1.43;
     @media (max-width: 576px) {
       font-size: 1.3rem;
-    } 
+    }
   }
 
   h4 {
@@ -96,9 +98,10 @@ export const DetailMarkdownWrapper = styled.div`
   p {
     margin-bottom: 16px;
     font-size: 1.1rem;
+    overflow: auto;
     @media (max-width: 576px) {
       font-size: 1rem;
-    } 
+    }
     /* @media (max-width: 376px) {
       font-size: .9rem;
     }  */
