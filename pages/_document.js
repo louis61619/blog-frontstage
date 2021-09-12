@@ -2,7 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 const APP_NAME = 'Coder Land'
-const APP_DESCRIPTION = "this is a blog name Coder Land"
+const APP_DESCRIPTION = "歡迎來到我的部落格Coder Land，我是一名前端工程師，這裡紀錄我探索技術的心得"
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
