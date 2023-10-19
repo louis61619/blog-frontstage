@@ -96,7 +96,7 @@ export default memo(function Search(props) {
         <Col xs={23} sm={23} md={23} lg={23} xl={18}>
           <div className="search-form" onFocus={e => setIsFocus(true)} onBlur={e => setIsFocus(false)}>
             <input type="search"
-                   spellcheck="false"
+                   spellCheck="false"
                    placeholder="Search Blog" 
                    value={value} 
                    onInput={e => setValue(e.target.value)}

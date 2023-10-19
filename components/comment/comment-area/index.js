@@ -67,7 +67,7 @@ export default memo(function CommentArea(props) {
             value={value}
             onChange={e => setValue(e.target.value)}
             onPressEnter={leaveMessage}
-            spellcheck="false"
+            spellCheck="false"
             placeholder="你想要說什麼？"
             className="reply-text"
             autoSize={{ minRows: 3, maxRows: 5 }}

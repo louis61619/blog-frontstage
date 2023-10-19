@@ -49,19 +49,11 @@ export default memo(function Header(props) {
       triggerSubMenuAction="click"
       overflowedIndicator={<AlignRightOutlined />}
     >
-      <Menu.Item key="/search" icon={<SearchOutlined />}>
-        <Link href="/search/title">
-          <a>
-            <span className="menu-text">搜索</span>
-          </a>
-        </Link>
+      <Menu.Item key="/search" icon={<SearchOutlined />} onClick={() => router.push('/search/title')}>
+        <span className="menu-text">搜索</span>
       </Menu.Item>
-      <Menu.Item key="/article" icon={<SnippetsOutlined />}>
-        <Link href="/article">
-          <a>
-            <span className="menu-text">文章</span>
-          </a>
-        </Link>
+      <Menu.Item key="/article" icon={<SnippetsOutlined />} onClick={() => router.push('/article')}>
+        <span className="menu-text">文章</span>
       </Menu.Item>
       <Menu.Item key="/profile" onClick={login} icon={isLogin? <UserOutlined />: <LoginOutlined />}>
         {isLogin ? (
